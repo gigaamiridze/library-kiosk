@@ -12,6 +12,7 @@ function Heading(props: IHeadingProps) {
       fontWeight={props.fontWeight}
       lineHeight={props.lineHeight}
       letterSpacing={props.letterSpacing}
+      textAlign={props.textAlign}
       textTransform={props.textTransform}
       onClick={props.handleClick}
     >

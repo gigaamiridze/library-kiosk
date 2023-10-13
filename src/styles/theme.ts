@@ -18,7 +18,7 @@ export const theme = {
     medium: '18px',
     large: '20px',
     xLarge: '24px',
-    xxLarge: '32px',
+    xxLarge: '80px',
   },
   fontWeights: {
     thin: 100,

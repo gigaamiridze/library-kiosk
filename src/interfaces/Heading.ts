@@ -10,6 +10,7 @@ export interface IHeadingStyledProps {
   fontWeight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | 'lighter' | 'normal' | 'bold' | 'bolder';
   lineHeight?: number | 'normal' | 'initial' | 'inherit';
   letterSpacing?: number | 'normal' | 'initial' | 'inherit';
+  textAlign?: 'left' | 'right' | 'center' | 'justify' | 'initial' |'inherit';
   textTransform?: 'capitalize' | 'uppercase' | 'lowercase' | 'initial' | 'inherit' | 'none';
 }
 
