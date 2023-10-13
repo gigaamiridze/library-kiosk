@@ -1,6 +1,9 @@
 // Header components
 export { default as HeaderContainer } from './components/header/HeaderContainer';
 
+// Footer components
+export { default as FooterContainer } from './components/footer/FooterContainer';
+
 // Shared components
 export { default as PreLoaderStyled } from './components/shared/PreLoaderStyled';
 export { default as HeadingStyled } from './components/shared/HeadingStyled';

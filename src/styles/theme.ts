@@ -6,6 +6,7 @@ export const theme = {
     black: '#000000',
     primary: '#16162E',
     purple: '#8445EE',
+    independence: '#505070',
   },
   fonts: {
     primary: '"Montserrat", sans-serif',

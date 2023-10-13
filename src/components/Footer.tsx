@@ -1,6 +1,19 @@
+import { FooterContainer, Container, FlexBox } from '../styles';
+import { Heading } from '../components';
+
 function Footer() {
   return (
-    <div>Footer</div>
+    <FooterContainer>
+      <Container>
+        <FlexBox alignItems='center' justifyContent='center'>
+          <Heading 
+            title='© Copyright 2023. Powered by Giga Amiridze.'
+            type='h5'
+            color='white'
+          />
+        </FlexBox>
+      </Container>
+    </FooterContainer>
   )
 }
 
