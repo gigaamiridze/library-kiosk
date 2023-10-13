@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { HeaderContainer, Container, FlexBox } from '../styles';
-import { Heading } from '../components';
+import { HeaderContainer, Container, FlexBox, Button } from '../styles';
 import { PageRoutes } from '../constants';
+import { Heading } from '../components';
 import { logo } from '../assets';
 
 function Header() {
@@ -38,6 +38,9 @@ function Header() {
               </li>
             </FlexBox>
           </nav>
+          <Link to={''}>
+            <Button type='button'>Contact Now</Button>
+          </Link>
         </FlexBox>
       </Container>
     </HeaderContainer>

@@ -33,7 +33,7 @@ export const theme = {
   borderRadius: {
     small: '2px',
     regular: '5px',
-    medium: '10px',
+    medium: '8px',
     large: '15px',
     xLarge: '20px',
     xxLarge: '25px',
