@@ -7,18 +7,18 @@ export interface ITheme {
   animations: IAnimations;
 }
 
-interface IColors {
+export interface IColors {
   white: string;
   black: string;
   purple: string;
 }
 
-interface IFonts {
+export interface IFonts {
   primary: string;
   secondaty: string;
 }
 
-interface IFontSizes {
+export interface IFontSizes {
   small: string;
   regular: string;
   medium: string;
