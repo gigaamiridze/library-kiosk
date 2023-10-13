@@ -1,6 +1,11 @@
+import { GlobalStyles } from './styles';
+
 function App() {
   return (
-    <h1>Library Kiosk</h1>
+    <>
+      <GlobalStyles />
+      <h1>Library Kiosk</h1>
+    </>
   )
 }
 
