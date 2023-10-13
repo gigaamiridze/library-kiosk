@@ -9,7 +9,10 @@ export interface ITheme {
 
 export interface IColors {
   white: string;
+  flashWhite: string;
+  gainsboro: string;
   black: string;
+  darkGunmetal: string;
   purple: string;
 }
 
