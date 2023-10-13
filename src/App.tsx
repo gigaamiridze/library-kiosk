@@ -12,7 +12,7 @@ function App() {
 
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
-    }, 500543530);
+    }, 4000);
   
     return () => clearTimeout(timeoutId);
   }, []);

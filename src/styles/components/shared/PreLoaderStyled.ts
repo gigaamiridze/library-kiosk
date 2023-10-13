@@ -77,7 +77,6 @@ const PreLoaderStyled = styled.div`
     ul {
       margin: 0;
       padding: 0;
-      list-style: none;
       position: absolute;
       left: 50%;
       top: 0;

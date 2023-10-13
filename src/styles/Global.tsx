@@ -48,6 +48,7 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
   }
 
+  // Element styles
   body {
     background-color: ${({ theme }) => theme.colors.white};
   }
