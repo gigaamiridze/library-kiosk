@@ -47,6 +47,10 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+
+  body {
+    background-color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 export default GlobalStyles;
