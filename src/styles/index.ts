@@ -1,6 +1,7 @@
 // Shared components
 export { default as PreLoaderStyled } from './components/shared/PreLoaderStyled';
 export { default as HeadingStyled } from './components/shared/HeadingStyled';
+export { default as Container } from './components/shared/Container';
 export { default as FlexBox } from './components/shared/FlexBox';
 
 // Other
