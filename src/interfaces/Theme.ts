@@ -12,13 +12,13 @@ export interface IColors {
   flashWhite: string;
   gainsboro: string;
   black: string;
-  darkGunmetal: string;
+  primary: string;
   purple: string;
 }
 
 export interface IFonts {
   primary: string;
-  secondaty: string;
+  secondary: string;
 }
 
 export interface IFontSizes {

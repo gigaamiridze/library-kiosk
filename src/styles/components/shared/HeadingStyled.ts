@@ -16,12 +16,12 @@ const getFontSize = (type: HeadingType, fontSizes: IFontSizes) => {
 const HeadingStyled = styled.div<IHeadingStyledProps>`
   ${({ theme, type, color, fontFamily, fontWeight, lineHeight, letterSpacing, textTransform, hoverColor }) => css`
     font-size: ${getFontSize(type, theme.fontSizes)};
-    color: ${color ? theme.colors[color] : theme.colors.black};
-    font-family: ${fontFamily && theme.fonts.primary};
-    font-weight: ${fontWeight && 'normal'};
-    line-height: ${lineHeight && 'normal'};
+    color: ${color ? theme.colors[color] : theme.colors.primary};
+    font-family: ${fontFamily || theme.fonts.primary};
+    font-weight: ${fontWeight || 'normal'};
+    line-height: ${lineHeight ? `${lineHeight}px` : 'normal'};
     letter-spacing: ${letterSpacing ? `${letterSpacing}px` : 0};
-    text-transform: ${textTransform && 'none'};
+    text-transform: ${textTransform || 'none'};
     transition: ${hoverColor ? theme.animations.easeInOut : null};
   `}
 

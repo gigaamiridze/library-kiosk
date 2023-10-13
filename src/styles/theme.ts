@@ -4,7 +4,7 @@ export const theme = {
     flashWhite: '#F3F3F8',
     gainsboro: '#DBDBE8',
     black: '#000000',
-    darkGunmetal: '#16162E',
+    primary: '#16162E',
     purple: '#8445EE',
   },
   fonts: {
@@ -13,8 +13,8 @@ export const theme = {
   },
   fontSizes: {
     small: '12px',
-    regular: '14px',
-    medium: '17.5px',
+    regular: '15px',
+    medium: '18px',
     large: '20px',
     xLarge: '24px',
     xxLarge: '32px',
