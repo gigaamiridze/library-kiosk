@@ -1,7 +1,9 @@
 export const theme = {
   colors: {
     white: '#FFFFFF',
+    flashWhite: '#F3F3F8',
     black: '#000000',
+    darkGunmetal: '#16162E',
     purple: '#8445EE',
   },
   fonts: {
