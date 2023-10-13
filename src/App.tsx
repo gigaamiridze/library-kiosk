@@ -1,10 +1,12 @@
+import { RouterProvider } from 'react-router-dom';
 import { GlobalStyles } from './styles';
+import { router } from './router';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <h1>Library Kiosk</h1>
+      <RouterProvider router={router} />
     </>
   )
 }
