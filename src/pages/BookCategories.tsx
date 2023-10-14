@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
+import { PageRoutes, LibraryActions } from '../constants';
 import { Heading, Pagination } from '../components';
 import { getBookCategories } from '../services';
-import { PageRoutes } from '../constants';
+import { useLibraryContext } from '../contexts';
 
 function BookCategories() {
   const [page, setPage] = useState<number>(0);
+  const { libraryState, dispatchLibrary } = useLibraryContext();
 
   const {
     data: categories,
@@ -18,6 +20,10 @@ function BookCategories() {
   } = useQuery(['categories', page], () => getBookCategories(page, 7), {
     keepPreviousData: true
   });
+
+  const handleCategoryChange = (newCategory: string) => {
+    dispatchLibrary({ type: LibraryActions.SELECT_CATEGORY, payload: newCategory });
+  }
   
   return (
     <FlexBox as='section' flexDirection='column' rowGap={80}>
@@ -83,6 +89,8 @@ function BookCategories() {
                   <Button 
                     key={category.id}
                     padding={10}
+                    isSelected={libraryState.selectedCategory === category.title}
+                    onClick={() => handleCategoryChange(category.title)}
                   >
                     {category.title}
                   </Button>
@@ -103,6 +111,7 @@ function BookCategories() {
                 hoverBgColor='white'
                 hoverTitleColor='purple'
                 padding={10}
+                disabled={!libraryState.selectedCategory}
               >
                 Select  
               </Button>

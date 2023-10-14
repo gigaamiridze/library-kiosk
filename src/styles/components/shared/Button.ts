@@ -2,9 +2,11 @@ import styled, { css } from 'styled-components';
 import { IButtonProps } from '../../../interfaces';
 
 const Button = styled.button<IButtonProps>`
-  ${({ theme, backgroundColor, titleColor, padding }) => css`
+  ${({ theme, backgroundColor, titleColor, isSelected, padding }) => css`
     background-color: ${backgroundColor ? theme.colors[backgroundColor] : 'transparent'};
     color: ${titleColor ? theme.colors[titleColor] : theme.colors.purple};
+    background-color: ${isSelected && theme.colors.purple};
+    color: ${isSelected && theme.colors.white};
     font-family: ${theme.fonts.primary};
     font-size: ${theme.fontSizes.small};
     font-weight: ${theme.fontWeights.medium};
