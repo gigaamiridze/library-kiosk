@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
+import { FlexBox, GrayBlock } from '../styles';
 import { PageRoutes } from '../constants';
 import { Heading } from '../components';
-import { FlexBox } from '../styles';
 
 function BookCategories() {
   return (
     <FlexBox as='section' flexDirection='column' rowGap={80}>
-      <FlexBox flexDirection='column' alignItems='center' rowGap={20}>
+      <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
         <Heading 
           title='Explore your favorite book category 📚'
           type='h4'
@@ -32,7 +32,7 @@ function BookCategories() {
             lineHeight={24}
           />
         </Link>
-      </FlexBox>
+      </GrayBlock>
     </FlexBox>
   )
 }
