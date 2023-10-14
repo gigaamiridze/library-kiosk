@@ -3,8 +3,8 @@ import { FlexBox } from '../styles';
 
 function MainServices() {
   return (
-    <>
-      <FlexBox as='section' flexDirection='column' rowGap={20}>
+    <FlexBox as='section' flexDirection='column' rowGap={80}>
+      <FlexBox flexDirection='column' rowGap={20}>
         <Heading 
           title='All Your Favorite Books In One Place 📚'
           type='h4'
@@ -21,7 +21,16 @@ function MainServices() {
           lineHeight={86}
         />
       </FlexBox>
-    </>
+      <FlexBox flexDirection='column' rowGap={40}>
+        <Heading 
+          title='Main Services'
+          type='h2'
+          fontFamily='secondary'
+          fontWeight='500'
+          lineHeight={65}
+        />
+      </FlexBox>
+    </FlexBox>
   )
 }
 
