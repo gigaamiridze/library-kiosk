@@ -6,7 +6,7 @@ const Button = styled.button<IButtonProps>`
     background-color: ${backgroundColor ? theme.colors[backgroundColor] : 'transparent'};
     color: ${titleColor ? theme.colors[titleColor] : theme.colors.purple};
     font-family: ${theme.fonts.primary};
-    font-size: ${theme.fontSizes.regular};
+    font-size: ${theme.fontSizes.small};
     font-weight: ${theme.fontWeights.medium};
     border: 1px solid ${theme.colors.purple};
     border-radius: ${theme.borderRadius.medium};

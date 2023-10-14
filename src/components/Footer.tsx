@@ -8,7 +8,7 @@ function Footer() {
         <FlexBox alignItems='center' justifyContent='center'>
           <Heading 
             title='© Copyright 2023. Powered by Giga Amiridze.'
-            type='h5'
+            type='h6'
             color='white'
           />
         </FlexBox>

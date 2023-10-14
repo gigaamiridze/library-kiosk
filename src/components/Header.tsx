@@ -6,7 +6,7 @@ import { images } from '../assets';
 
 function Header() {
   return (
-    <HeaderContainer >
+    <HeaderContainer>
       <Container>
         <FlexBox alignItems='center' justifyContent='space-between'>
           <Link to={PageRoutes.MAIN_SERVICES}>
@@ -18,7 +18,7 @@ function Header() {
                 <Link to={PageRoutes.MAIN_SERVICES}>
                   <Heading 
                     title='Main Services'
-                    type='h5'
+                    type='h6'
                     fontWeight='500'
                     hoverColor='purple'
                     lineHeight={24}
@@ -29,7 +29,7 @@ function Header() {
                 <Link to={PageRoutes.BOOK_CATEGORIES}>
                   <Heading 
                     title='Book Categories'
-                    type='h5'
+                    type='h6'
                     fontWeight='500'
                     hoverColor='purple'
                     lineHeight={24}

@@ -14,7 +14,7 @@ function ServiceCard(props: IServiceCardProps) {
       <img src={image} alt={buttonTitle} />
       <Heading 
         title={headingTitle}
-        type='h5'
+        type='h6'
         fontWeight='500'
       />
       <Button

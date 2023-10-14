@@ -13,8 +13,8 @@ export const theme = {
     secondary: '"DM Serif Display", serif',
   },
   fontSizes: {
-    small: '12px',
-    regular: '15px',
+    small: '15px',
+    regular: '16px',
     medium: '18px',
     large: '20px',
     xLarge: '65px',
