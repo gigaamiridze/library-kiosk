@@ -2,8 +2,9 @@ import axios from 'axios';
 import { IBookData, IBookCategory } from '../interfaces';
 import { Api } from '../constants';
 
-export const getBookCategories = async () => {
-  const { data } = await axios.get<IBookData>(`${Api.URL}/volumes?q=all&maxResults=30&key=${Api.KEY}`);
+export const getBookCategories = async (page: number, maxResults: number) => {
+  const startIndex = page * maxResults;
+  const { data } = await axios.get<IBookData>(`${Api.URL}/volumes?q=all&startIndex=${startIndex}&maxResults=${maxResults}&key=${Api.KEY}`);
   
   const uniqueCategories = new Set<string>();
 
