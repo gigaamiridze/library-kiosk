@@ -5,11 +5,9 @@ import { GlobalStyles } from './styles';
 import { router } from './router';
 
 function App() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsLoading(true);
-
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
     }, 4000);
