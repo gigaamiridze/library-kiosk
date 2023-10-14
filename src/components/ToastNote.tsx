@@ -13,7 +13,7 @@ function ToastNote() {
       pauseOnFocusLoss
       transition={Slide}
       pauseOnHover
-      theme='dark'
+      theme='light'
     />
   )
 }
