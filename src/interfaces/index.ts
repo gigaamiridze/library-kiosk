@@ -1,4 +1,5 @@
 export * from './ServiceCard';
+export * from './Pagination';
 export * from './Heading';
 export * from './FlexBox';
 export * from './Library';

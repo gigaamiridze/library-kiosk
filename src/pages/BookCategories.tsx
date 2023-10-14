@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
+import { Heading, Pagination } from '../components';
 import { getBookCategories } from '../services';
 import { PageRoutes } from '../constants';
-import { Heading } from '../components';
 
 function BookCategories() {
   const [page, setPage] = useState<number>(0);
@@ -53,7 +53,7 @@ function BookCategories() {
           flexDirection='column' 
           alignItems='center' 
           justifyContent='center'
-          rowGap={20}
+          rowGap={30}
         >
           {isLoading || isFetching ? (
             <SpinnerLoader />
@@ -74,29 +74,20 @@ function BookCategories() {
               {categories?.map((category) => (
                 <Button 
                   key={category.id}
+                  padding={10}
                 >
                   {category.title}
                 </Button>
               ))}
             </FlexBox>
           )}
-          <span>Current Page: {page + 1}</span>
-          <button
-            onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 0))}
-            disabled={page === 0}
-          >
-            Previous Page
-          </button>{' '}
-          <button
-            onClick={() => {
-              if (!isPreviousData && categories && categories.length > 0) {
-                setPage((prevPage) => prevPage + 1);
-              }
-            }}
-            disabled={isPreviousData || isFetching}
-          >
-            Next Page
-          </button>
+          <Pagination 
+            data={categories}
+            currentPage={page}
+            setcurrentPage={setPage}
+            isPreviousData={isPreviousData}
+            isFetching={isFetching}
+          />
         </FlexBox>
       </Container>
     </FlexBox>

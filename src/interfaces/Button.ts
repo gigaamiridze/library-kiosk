@@ -5,4 +5,5 @@ export interface IButtonProps {
   titleColor?: keyof IColors;
   hoverBgColor?: keyof IColors;
   hoverTitleColor?: keyof IColors;
+  padding?: number; 
 }
