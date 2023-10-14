@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
 import { getBookCategories } from '../services';
-import { Container, FlexBox, GrayBlock } from '../styles';
 import { PageRoutes } from '../constants';
 import { Heading } from '../components';
 
@@ -13,10 +13,9 @@ function BookCategories() {
     data: categories,
     isLoading,
     isError,
-    error,
     isFetching,
     isPreviousData,
-  } = useQuery(['categories', page], () => getBookCategories(page, 5), {
+  } = useQuery(['categories', page], () => getBookCategories(page, 7), {
     keepPreviousData: true
   });
   
@@ -50,17 +49,36 @@ function BookCategories() {
         </Link>
       </GrayBlock>
       <Container>
-        <div>
-          {isLoading ? (
-            <div>Loading...</div>
+        <FlexBox 
+          flexDirection='column' 
+          alignItems='center' 
+          justifyContent='center'
+          rowGap={20}
+        >
+          {isLoading || isFetching ? (
+            <SpinnerLoader />
           ) : isError ? (
-            <div>Error</div>
+            <Heading 
+              title='Something went wrong. Please try again.' 
+              type='h5' 
+              fontWeight='500'
+            />
           ) : (
-            <div>
+            <FlexBox 
+              alignItems='center' 
+              justifyContent='center'
+              flexWrap='wrap'
+              columnGap={20}
+              rowGap={20}
+            >
               {categories?.map((category) => (
-                <p key={category.id}>{category.title}</p>
+                <Button 
+                  key={category.id}
+                >
+                  {category.title}
+                </Button>
               ))}
-            </div>
+            </FlexBox>
           )}
           <span>Current Page: {page + 1}</span>
           <button
@@ -79,8 +97,7 @@ function BookCategories() {
           >
             Next Page
           </button>
-          {isFetching ? <span>Loading...</span> : null}{' '}
-        </div>
+        </FlexBox>
       </Container>
     </FlexBox>
   )

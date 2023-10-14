@@ -6,6 +6,7 @@ export interface IFlexBoxProps {
   flexDirection?: FlexDirectionType;
   alignItems?: AlignItemsType;
   justifyContent?: JustifyContentType;
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse' | 'initial';
   gap?: number | 'normal' | 'initial' | 'inherit';
   rowGap?: number | 'normal' | 'initial' | 'inherit';
   columnGap?: number | 'normal' | 'initial' | 'inherit';

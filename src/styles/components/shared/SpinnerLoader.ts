@@ -4,8 +4,8 @@ import { ISpinnerLoaderProps } from '../../../interfaces';
 
 const SpinnerLoader = styled.div<ISpinnerLoaderProps>`
   ${({ theme, size }) => css`
-    width: ${size ? size : 45}px;
-    height: ${size ? size : 45}px;
+    width: ${size ? size : 48}px;
+    height: ${size ? size : 48}px;
     border-top: 3px solid ${theme.colors.purple};
     border-radius: ${theme.borderRadius.circle};
     animation: ${keyframes.rotation} ${theme.animations.linearInfinite};
