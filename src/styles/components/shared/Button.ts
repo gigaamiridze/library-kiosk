@@ -24,6 +24,15 @@ const Button = styled.button<IButtonProps>`
       color: ${hoverTitleColor ? theme.colors[hoverTitleColor] : theme.colors.white};
     `}
   }
+
+  &:disabled {
+    ${({ theme }) => css`
+      background-color: ${theme.colors.white};
+      border-color: ${theme.colors.gainsboro};
+      color: ${theme.colors.gainsboro};
+    `}
+    cursor: not-allowed;
+  }
 `;
 
 export default Button;
