@@ -14,7 +14,7 @@ export const useUserContext = () => {
   return context;
 }
 
-const userInitialState: IUserState = {
+const initialUserState: IUserState = {
   isAuthenticated: false,
   username: null,
 }
@@ -22,16 +22,16 @@ const userInitialState: IUserState = {
 const userReducer = (state: IUserState, action: UserActionType) => {
   switch (action.type) {
     case UserActions.LOGIN_SUCCESS:
-      return { isAuthenticated: true, username: action.payload };
+      return { ...state, isAuthenticated: true, username: action.payload };
     case UserActions.LOGOUT:
-      return { isAuthenticated: false, username: null };
+      return { ...state, isAuthenticated: false, username: null };
     default:
       return state;
   }
 }
 
 export const UserContextProvider = ({ children }: IUserContextProvider) => {
-  const [userState, dispatchUser] = useReducer(userReducer, userInitialState);
+  const [userState, dispatchUser] = useReducer(userReducer, initialUserState);
   const value = {userState, dispatchUser};
 
   return (
