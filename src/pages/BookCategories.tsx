@@ -49,45 +49,54 @@ function BookCategories() {
         </Link>
       </GrayBlock>
       <Container>
-        <FlexBox 
-          flexDirection='column' 
-          alignItems='center' 
-          justifyContent='center'
-          rowGap={30}
-        >
-          {isLoading || isFetching ? (
-            <SpinnerLoader />
-          ) : isError ? (
-            <Heading 
-              title='Something went wrong. Please try again.' 
-              type='h5' 
-              fontWeight='500'
-            />
-          ) : (
-            <FlexBox 
-              alignItems='center' 
-              justifyContent='center'
-              flexWrap='wrap'
-              columnGap={20}
-              rowGap={20}
-            >
-              {categories?.map((category) => (
-                <Button 
-                  key={category.id}
-                  padding={10}
-                >
-                  {category.title}
-                </Button>
-              ))}
-            </FlexBox>
-          )}
-          <Pagination 
-            data={categories}
-            currentPage={page}
-            setcurrentPage={setPage}
-            isPreviousData={isPreviousData}
-            isFetching={isFetching}
+        <FlexBox flexDirection='column' rowGap={50}>
+          <Heading 
+            title='Select a category'
+            type='h2'
+            fontFamily='secondary'
+            fontWeight='500'
+            lineHeight={65}
           />
+          <FlexBox 
+            flexDirection='column' 
+            alignItems='center' 
+            justifyContent='center'
+            rowGap={40}
+          >
+            {isLoading || isFetching ? (
+              <SpinnerLoader />
+            ) : isError ? (
+              <Heading 
+                title='Something went wrong. Please try again.' 
+                type='h5' 
+                fontWeight='500'
+              />
+            ) : (
+              <FlexBox 
+                alignItems='center' 
+                justifyContent='center'
+                flexWrap='wrap'
+                columnGap={20}
+                rowGap={20}
+              >
+                {categories?.map((category) => (
+                  <Button 
+                    key={category.id}
+                    padding={10}
+                  >
+                    {category.title}
+                  </Button>
+                ))}
+              </FlexBox>
+            )}
+            <Pagination 
+              data={categories}
+              currentPage={page}
+              setcurrentPage={setPage}
+              isPreviousData={isPreviousData}
+              isFetching={isFetching}
+            />
+          </FlexBox>
         </FlexBox>
       </Container>
     </FlexBox>
