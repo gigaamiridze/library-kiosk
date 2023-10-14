@@ -89,13 +89,24 @@ function BookCategories() {
                 ))}
               </FlexBox>
             )}
-            <Pagination 
-              data={categories}
-              currentPage={page}
-              setcurrentPage={setPage}
-              isPreviousData={isPreviousData}
-              isFetching={isFetching}
-            />
+            <FlexBox alignItems='center' columnGap={30}>
+              <Pagination 
+                data={categories}
+                currentPage={page}
+                setcurrentPage={setPage}
+                isPreviousData={isPreviousData}
+                isFetching={isFetching}
+              />
+              <Button 
+                backgroundColor='purple'
+                titleColor='white'
+                hoverBgColor='white'
+                hoverTitleColor='purple'
+                padding={10}
+              >
+                Select  
+              </Button>
+            </FlexBox>
           </FlexBox>
         </FlexBox>
       </Container>
