@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { HeaderContainer, Container, FlexBox, Button } from '../styles';
 import { PageRoutes } from '../constants';
 import { Heading } from '../components';
-import { logo } from '../assets';
+import { images } from '../assets';
 
 function Header() {
   return (
@@ -10,7 +10,7 @@ function Header() {
       <Container>
         <FlexBox alignItems='center' justifyContent='space-between'>
           <Link to={PageRoutes.MAIN_SERVICES}>
-            <img src={logo} alt='EleBooks Logo' />
+            <img src={images.logo} alt='EleBooks Logo' />
           </Link>
           <nav>
             <FlexBox as='ul' alignItems='center' columnGap={30}>

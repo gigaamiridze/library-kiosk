@@ -1,1 +1,3 @@
-export { default as logo } from './images/elebooks-logo.png';
+import images from './images';
+
+export { images };
