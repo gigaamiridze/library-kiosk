@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
-    }, 0);
+    }, 4000);
   
     return () => clearTimeout(timeoutId);
   }, []);
