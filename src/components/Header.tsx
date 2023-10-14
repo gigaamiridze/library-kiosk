@@ -38,7 +38,7 @@ function Header() {
               </li>
             </FlexBox>
           </nav>
-          <Link to={''}>
+          <Link to={PageRoutes.CONTACT}>
             <Button type='button'>Contact Now</Button>
           </Link>
         </FlexBox>
