@@ -1,5 +1,14 @@
 import { keyframes } from 'styled-components';
 
+const rotation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }  
+`;
+
 const page0 = keyframes`
   4% {
     transform: rotateZ(0deg) translateX(-18px);
@@ -288,6 +297,7 @@ const book = keyframes`
 `;
 
 export default { 
+  rotation,
   page0,
   page1,
   page2,

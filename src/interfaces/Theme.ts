@@ -48,6 +48,7 @@ interface IBorderRadius extends IFontSizes {
 }
 
 interface IAnimations {
-  easeInfinite: string;
   easeInOut: string;
+  easeInfinite: string;
+  linearInfinite: string;
 }

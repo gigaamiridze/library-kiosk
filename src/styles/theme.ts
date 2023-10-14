@@ -41,7 +41,8 @@ export const theme = {
     circle: '50%',
   },
   animations: {
-    easeInfinite: '5s ease infinite',
     easeInOut: 'all 0.2s ease-in-out',
+    easeInfinite: '5s ease infinite',
+    linearInfinite: '1s linear infinite',
   },
 }
