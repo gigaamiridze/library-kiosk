@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { getBookCategories } from '../services';
 import { FlexBox, GrayBlock } from '../styles';
 import { PageRoutes } from '../constants';
 import { Heading } from '../components';
 
 function BookCategories() {
+  const { data: categories, error, isLoading } = useQuery('categories', getBookCategories);
+
+  console.log(categories);
+
   return (
     <FlexBox as='section' flexDirection='column' rowGap={80}>
       <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
