@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { PreLoader } from './components';
+import { PreLoader, ToastNote } from './components';
 import { GlobalStyles } from './styles';
 import { router } from './router';
 
@@ -22,6 +22,7 @@ function App() {
         ? <PreLoader /> 
         : <RouterProvider router={router} />
       }
+      <ToastNote />
     </>
   )
 }
