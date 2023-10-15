@@ -47,7 +47,7 @@ export const InputIcon = styled.div`
   svg {
     ${({ theme }) => css`
       color: ${theme.colors.cadetBlue};
-      font-size: ${theme.fontSizes.regular};
+      font-size: ${theme.fontSizes.medium};
     `}
   }
 `;

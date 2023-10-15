@@ -17,14 +17,20 @@ export const useUserContext = () => {
 const initialUserState: IUserState = {
   isAuthenticated: false,
   username: null,
+  email: null,
 }
 
 const userReducer = (state: IUserState, action: UserActionType) => {
   switch (action.type) {
     case UserActions.LOGIN_SUCCESS:
-      return { ...state, isAuthenticated: true, username: action.payload };
+      return { 
+        ...state, 
+        isAuthenticated: true, 
+        username: action.payload.username,
+        email: action.payload.email 
+      };
     case UserActions.LOGOUT:
-      return { ...state, isAuthenticated: false, username: null };
+      return { ...state, isAuthenticated: false, username: null, email: null };
     default:
       return state;
   }

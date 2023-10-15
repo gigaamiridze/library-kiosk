@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
+import FlexBox from './FlexBox';
 
-const ModalContainer = styled.div`
+const ModalContainer = styled(FlexBox)`
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
     border-radius: ${theme.borderRadius.xLarge};
