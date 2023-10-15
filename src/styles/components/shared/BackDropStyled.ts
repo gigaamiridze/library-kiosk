@@ -14,6 +14,9 @@ const BackDropStyled = styled.div<{ isOpen: boolean }>`
   height: 100vh;
   backdrop-filter: blur(7px);
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default BackDropStyled;

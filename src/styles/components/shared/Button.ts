@@ -10,6 +10,7 @@ const Button = styled.button<IButtonProps>`
     font-family: ${theme.fonts.primary};
     font-size: ${theme.fontSizes.small};
     font-weight: ${theme.fontWeights.medium};
+    border: none;
     border: 1px solid ${theme.colors.purple};
     border-radius: ${theme.borderRadius.medium};
     padding: ${padding ? padding : 12}px;
