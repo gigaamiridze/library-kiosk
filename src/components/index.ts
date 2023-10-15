@@ -17,3 +17,4 @@ export { default as BackDrop } from './shared/BackDrop';
 export { default as Heading } from './shared/Heading';
 export { default as Header } from './shared/Header';
 export { default as Footer } from './shared/Footer';
+export { default as Input } from './shared/Input';

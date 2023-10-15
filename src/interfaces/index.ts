@@ -7,6 +7,7 @@ export * from './Loader';
 export * from './Button';
 export * from './Theme';
 export * from './Modal';
+export * from './Input';
 export * from './Book';
 export * from './User';
 export * from './Card';

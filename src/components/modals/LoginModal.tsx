@@ -3,6 +3,7 @@ import { useUserContext } from '../../contexts';
 import { IModalProps } from '../../interfaces';
 import { UserActions } from '../../constants';
 import { ModalContainer } from '../../styles';
+import { Heading } from '../../components';
 
 function LoginModal({ onClose }: IModalProps) {
   const { userState, dispatchUser } = useUserContext();
@@ -16,7 +17,12 @@ function LoginModal({ onClose }: IModalProps) {
 
   return (
     <ModalContainer>
-      Login Modal
+      <Heading 
+        title='Login to your account'
+        type='h3'
+        fontWeight='700'
+        textAlign='center'
+      />
     </ModalContainer>
   )
 }

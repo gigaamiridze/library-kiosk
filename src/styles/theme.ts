@@ -7,6 +7,7 @@ export const theme = {
     primary: '#16162E',
     purple: '#8445EE',
     orange: '#F2B01E',
+    cadetBlue: '#A9A7BD',
     independence: '#505070',
     backdrop: 'rgba(10, 25, 47, 0.40)',
   },

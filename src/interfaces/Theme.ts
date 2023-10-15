@@ -15,6 +15,7 @@ export interface IColors {
   primary: string;
   purple: string;
   orange: string;
+  cadetBlue: string;
   independence: string;
   backdrop: string;
 }

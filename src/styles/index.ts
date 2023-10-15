@@ -21,6 +21,7 @@ export { default as Container } from './components/shared/Container';
 export { default as GrayBlock } from './components/shared/GrayBlock';
 export { default as FlexBox } from './components/shared/FlexBox';
 export { default as Button } from './components/shared/Button';
+export * from './components/shared/Input';
 
 // Other
 export { default as GlobalStyles } from './Global';
