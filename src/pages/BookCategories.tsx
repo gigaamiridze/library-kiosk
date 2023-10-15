@@ -6,7 +6,7 @@ import { PageRoutes, LibraryActions } from '../constants';
 import { Heading, Pagination } from '../components';
 import { getBookCategories } from '../services';
 import { useLibraryContext } from '../contexts';
-import { showWarningMessage } from '../utils';
+import { showInfoMessage } from '../utils';
 
 function BookCategories() {
   const [page, setPage] = useState<number>(0);
@@ -31,7 +31,7 @@ function BookCategories() {
     if (selectedCategory) {
       navigate(`${PageRoutes.BOOK_SELECTION}?category=${selectedCategory.toLowerCase()}`);
     } else {
-      showWarningMessage('Please select a book category');
+      showInfoMessage('Please select a book category');
     }
   }
   
@@ -121,7 +121,6 @@ function BookCategories() {
                 hoverBgColor='white'
                 hoverTitleColor='purple'
                 padding={10}
-                disabled={!selectedCategory}
                 onClick={handleNavigate}
               >
                 Select  
