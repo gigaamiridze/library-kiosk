@@ -14,6 +14,7 @@ function BookSelection() {
   const { libraryState, dispatchLibrary } = useLibraryContext();
   const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
+  const [disabled, setDisabled] = useState<boolean>(false);
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
 
@@ -41,11 +42,19 @@ function BookSelection() {
 
   const handleNavigate = () => {
     if (libraryState.selectedBook) {
-      if (userState.isAuthenticated) {
-        // TODO: Open Confirmation Modal
-      } else {
-        setLoginModalOpen(true);
-      }
+      setDisabled(true);
+
+      const timeoutId = setTimeout(() => {
+        if (userState.isAuthenticated) {
+          // TODO: Open Confirmation Modal
+          setDisabled(false);
+        } else {
+          setLoginModalOpen(true);
+          setDisabled(false);
+        }
+      }, 3000);
+
+      return () => clearTimeout(timeoutId);
     } else {
       showInfoMessage('Please select a book');
     }
@@ -144,9 +153,13 @@ function BookSelection() {
                 hoverBgColor='white'
                 hoverTitleColor='purple'
                 padding={10}
+                disabled={disabled}
                 onClick={handleNavigate}
               >
                 Select
+                {disabled && (
+                  <SpinnerLoader size={19} color='gainsboro' />
+                )}
               </Button>
             </FlexBox>
           </FlexBox>

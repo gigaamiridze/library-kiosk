@@ -3,10 +3,10 @@ import keyframes from '../../keyframes';
 import { ISpinnerLoaderProps } from '../../../interfaces';
 
 const SpinnerLoader = styled.div<ISpinnerLoaderProps>`
-  ${({ theme, size }) => css`
+  ${({ theme, size, color }) => css`
     width: ${size ? size : 48}px;
     height: ${size ? size : 48}px;
-    border-top: 3px solid ${theme.colors.purple};
+    border-top: 3px solid ${color ? theme.colors[color] : theme.colors.purple};
     border-radius: ${theme.borderRadius.circle};
     animation: ${keyframes.rotation} ${theme.animations.linearInfinite};
   `}

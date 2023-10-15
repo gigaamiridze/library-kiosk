@@ -10,6 +10,7 @@ import { showInfoMessage } from '../utils';
 
 function BookCategories() {
   const [page, setPage] = useState<number>(0);
+  const [disabled, setDisabled] = useState<boolean>(false);
   const { libraryState: { selectedCategory }, dispatchLibrary } = useLibraryContext();
   const navigate = useNavigate();
 
@@ -31,7 +32,13 @@ function BookCategories() {
 
   const handleNavigate = () => {
     if (selectedCategory) {
-      navigate(`${PageRoutes.BOOK_SELECTION}?category=${selectedCategory?.toLowerCase()}`);
+      setDisabled(true);
+
+      const timeoutId = setTimeout(() => {
+        navigate(`${PageRoutes.BOOK_SELECTION}?category=${selectedCategory?.toLowerCase()}`);
+      }, 3000);
+
+      return () => clearTimeout(timeoutId);
     } else {
       showInfoMessage('Please select a book category');
     }
@@ -125,9 +132,13 @@ function BookCategories() {
                 hoverBgColor='white'
                 hoverTitleColor='purple'
                 padding={10}
+                disabled={disabled}
                 onClick={handleNavigate}
               >
-                Select  
+                Select
+                {disabled && (
+                  <SpinnerLoader size={19} color='gainsboro' />
+                )}
               </Button>
             </FlexBox>
           </FlexBox>

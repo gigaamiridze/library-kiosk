@@ -18,6 +18,7 @@ const Button = styled.button<IButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  column-gap: 8px;
   cursor: pointer;
 
   &:hover {
