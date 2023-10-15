@@ -20,7 +20,9 @@ function BookCategories() {
     isFetching,
     isPreviousData,
   } = useQuery(['categories', page], () => getBookCategories(page, 7), {
-    keepPreviousData: true
+    keepPreviousData: true,
+    staleTime: 300000, // 5 minutes in milliseconds
+    cacheTime: 3600000, // 1 hour in milliseconds
   });
 
   const handleCategoryChange = (newCategory: string) => {
