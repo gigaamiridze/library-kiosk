@@ -29,7 +29,7 @@ function BookCategories() {
 
   const handleNavigate = () => {
     if (selectedCategory) {
-      navigate(`${PageRoutes.BOOK_SELECTION}?category=${selectedCategory.toLowerCase()}`);
+      navigate(`${PageRoutes.BOOK_SELECTION}?category=${selectedCategory?.toLowerCase()}`);
     } else {
       showInfoMessage('Please select a book category');
     }
@@ -88,24 +88,26 @@ function BookCategories() {
                 fontWeight='500'
               />
             ) : (
-              <FlexBox 
-                alignItems='center' 
-                justifyContent='center'
-                flexWrap='wrap'
-                columnGap={20}
-                rowGap={20}
-              >
-                {categories?.map((category) => (
-                  <Button 
-                    key={category.id}
-                    padding={10}
-                    isSelected={selectedCategory === category.title}
-                    onClick={() => handleCategoryChange(category.title)}
-                  >
-                    {category.title}
-                  </Button>
-                ))}
-              </FlexBox>
+              <Container>
+                <FlexBox 
+                  alignItems='center' 
+                  justifyContent='center'
+                  flexWrap='wrap'
+                  columnGap={20}
+                  rowGap={20}
+                >
+                  {categories?.map((category) => (
+                    <Button 
+                      key={category.id}
+                      padding={10}
+                      isSelected={selectedCategory === category.title}
+                      onClick={() => handleCategoryChange(category.title)}
+                    >
+                      {category.title}
+                    </Button>
+                  ))}
+                </FlexBox>
+              </Container>
             )}
             <FlexBox alignItems='center' columnGap={30}>
               <Pagination 

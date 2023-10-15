@@ -19,7 +19,7 @@ const BookCardContainer = styled.div<{ isSelected: boolean }>`
       border-top-right-radius: ${theme.borderRadius.large};
     `}
     width: 100%;
-    max-height: 350px;
+    max-height: 300px;
     object-fit: cover;
   }
 

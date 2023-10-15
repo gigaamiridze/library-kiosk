@@ -96,29 +96,31 @@ function BookSelection() {
                 fontWeight='500'
               />
             ) : (
-              <FlexBox
-                alignItems='flex-start'
-                justifyContent='space-between'
-                flexWrap='wrap'
-                columnGap={20}
-                rowGap={20}
-              >
-                {books?.map((book) => {
-                  const { volumeInfo } = book;
+              <Container>
+                <FlexBox
+                  alignItems='flex-start'
+                  justifyContent='space-between'
+                  flexWrap='wrap'
+                  columnGap={20}
+                  rowGap={20}
+                >
+                  {books?.map((book) => {
+                    const { volumeInfo } = book;
 
-                  return (
-                    <BookCard
-                      key={book.id}
-                      title={volumeInfo.title}
-                      image={volumeInfo.imageLinks.thumbnail}
-                      rating={volumeInfo.averageRating}
-                      authors={volumeInfo.authors}
-                      isSelected={libraryState.selectedBook === volumeInfo.title}
-                      handleClick={() => handleBookChange(volumeInfo.title)}
-                    />
-                  )
-                })}
-              </FlexBox>
+                    return (
+                      <BookCard
+                        key={book.id}
+                        title={volumeInfo.title}
+                        image={volumeInfo.imageLinks ? volumeInfo.imageLinks.smallThumbnail : undefined}
+                        rating={volumeInfo.averageRating}
+                        authors={volumeInfo.authors}
+                        isSelected={libraryState.selectedBook === volumeInfo.title}
+                        handleClick={() => handleBookChange(volumeInfo.title)}
+                      />
+                    )
+                  })}
+                </FlexBox>
+              </Container>
             )}
             <FlexBox alignItems='center' columnGap={30}>
               <Pagination

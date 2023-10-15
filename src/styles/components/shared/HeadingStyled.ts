@@ -14,7 +14,7 @@ const getFontSize = (type: HeadingType, fontSizes: IFontSizes) => {
 }
 
 const HeadingStyled = styled.div<IHeadingStyledProps>`
-  ${({ theme, type, color, fontFamily, fontWeight, lineHeight, letterSpacing, textAlign, textTransform, hoverColor }) => css`
+  ${({ theme, type, color, fontFamily, fontWeight, lineHeight, letterSpacing, textAlign, textTransform, ellipsis, hoverColor }) => css`
     font-size: ${getFontSize(type, theme.fontSizes)};
     color: ${color ? theme.colors[color] : theme.colors.primary};
     font-family: ${fontFamily ? theme.fonts[fontFamily] : theme.fonts.primary};
@@ -24,6 +24,9 @@ const HeadingStyled = styled.div<IHeadingStyledProps>`
     text-align: ${textAlign || 'left'};
     text-transform: ${textTransform || 'none'};
     transition: ${hoverColor ? theme.animations.easeInOut : null};
+    overflow: ${ellipsis ? 'hidden' : 'visible'};
+    white-space: ${ellipsis ? 'nowrap' : 'normal'};
+    text-overflow: ${ellipsis ? 'ellipsis' : 'clip'};
   `}
 
   &:hover {

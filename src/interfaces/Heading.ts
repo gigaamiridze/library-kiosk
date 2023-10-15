@@ -12,6 +12,7 @@ export interface IHeadingStyledProps {
   letterSpacing?: number | 'normal' | 'initial' | 'inherit';
   textAlign?: 'left' | 'right' | 'center' | 'justify' | 'initial' |'inherit';
   textTransform?: 'capitalize' | 'uppercase' | 'lowercase' | 'initial' | 'inherit' | 'none';
+  ellipsis?: boolean; 
 }
 
 export interface IHeadingProps extends IHeadingStyledProps {

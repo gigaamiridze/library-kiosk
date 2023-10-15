@@ -7,7 +7,7 @@ export interface IServiceCardProps {
 
 export interface IBookCardProps {
   title: string;
-  image: string;
+  image: string | undefined;
   rating: number;
   authors: string[];
   isSelected: boolean;
