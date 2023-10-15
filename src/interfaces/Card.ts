@@ -2,7 +2,7 @@ export interface IServiceCardProps {
   image: string;
   buttonTitle: string;
   headingTitle: string;
-  handleClick: () => void;
+  onClick: () => void;
 }
 
 export interface IBookCardProps {
@@ -11,5 +11,5 @@ export interface IBookCardProps {
   rating: number;
   authors: string[];
   isSelected: boolean;
-  handleClick: () => void;
+  onClick: () => void;
 }

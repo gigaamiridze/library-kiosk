@@ -3,7 +3,7 @@ import { IServiceCardProps } from '../../interfaces';
 import { Heading } from '../../components';
 
 function ServiceCard(props: IServiceCardProps) {
-  const { image, headingTitle, buttonTitle, handleClick } = props;
+  const { image, headingTitle, buttonTitle, onClick } = props;
 
   return (
     <ServiceCardContainer 
@@ -23,7 +23,7 @@ function ServiceCard(props: IServiceCardProps) {
         titleColor='white'
         hoverBgColor='white'
         hoverTitleColor='purple'
-        onClick={handleClick}
+        onClick={onClick}
       >
         {buttonTitle}
       </Button>

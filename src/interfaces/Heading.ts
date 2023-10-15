@@ -17,5 +17,5 @@ export interface IHeadingStyledProps {
 
 export interface IHeadingProps extends IHeadingStyledProps {
   title: string;
-  handleClick?: () => void;
+  onClick?: () => void;
 }

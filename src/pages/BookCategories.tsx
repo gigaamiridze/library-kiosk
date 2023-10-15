@@ -26,7 +26,7 @@ function BookCategories() {
     cacheTime: 3600000, // 1 hour in milliseconds
   });
 
-  const handleCategoryChange = (newCategory: string) => {
+  const handleCategorySelection = (newCategory: string) => {
     dispatchLibrary({ type: LibraryActions.SELECT_CATEGORY, payload: newCategory });
   }
 
@@ -110,7 +110,7 @@ function BookCategories() {
                       key={category.id}
                       padding={10}
                       isSelected={selectedCategory === category.title}
-                      onClick={() => handleCategoryChange(category.title)}
+                      onClick={() => handleCategorySelection(category.title)}
                     >
                       {category.title}
                     </Button>

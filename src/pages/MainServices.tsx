@@ -40,13 +40,13 @@ function MainServices() {
               image={images.borrowBook}
               headingTitle='Explore, borrow, enjoy. Dive into a world of stories with our easy book borrowing service.'
               buttonTitle='Borrow a Book'
-              handleClick={() => navigate(PageRoutes.BOOK_CATEGORIES)}
+              onClick={() => navigate(PageRoutes.BOOK_CATEGORIES)}
             />
             <ServiceCard 
               image={images.returnBook}
               headingTitle='Complete the journey. Return your borrowed books hassle-free and share the reading joy.'
               buttonTitle='Return a Book'
-              handleClick={() => navigate('')}
+              onClick={() => navigate('')}
             />
           </FlexBox>
         </FlexBox>

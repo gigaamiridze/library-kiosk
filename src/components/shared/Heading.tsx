@@ -15,7 +15,7 @@ function Heading(props: IHeadingProps) {
       textAlign={props.textAlign}
       textTransform={props.textTransform}
       ellipsis={props.ellipsis}
-      onClick={props.handleClick}
+      onClick={props.onClick}
     >
       {props.title}
     </HeadingStyled>

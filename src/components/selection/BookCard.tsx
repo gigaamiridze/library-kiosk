@@ -4,12 +4,12 @@ import { IBookCardProps } from '../../interfaces';
 import { images } from '../../assets';
 
 function BookCard(props: IBookCardProps) {
-  const { title, image, rating, authors, isSelected, handleClick } = props;
+  const { title, image, rating, authors, isSelected, onClick } = props;
 
   return (
     <BookCardContainer 
       isSelected={isSelected}
-      onClick={handleClick}
+      onClick={onClick}
     >
       {image 
         ? <img src={image} alt={title} />

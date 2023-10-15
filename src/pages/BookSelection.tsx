@@ -36,11 +36,11 @@ function BookSelection() {
     cacheTime: 3600000, // 1 hour in milliseconds
   });
 
-  const handleBookChange = (newBook: string) => {
+  const handleBookSelection = (newBook: string) => {
     dispatchLibrary({ type: LibraryActions.SELECT_BOOK, payload: newBook });
   };
 
-  const handleNavigate = () => {
+  const checkBookAndShowModal = () => {
     if (libraryState.selectedBook) {
       setDisabled(true);
 
@@ -58,7 +58,7 @@ function BookSelection() {
     } else {
       showInfoMessage('Please select a book');
     }
-  };
+  }
 
   return (
     <FlexBox as='section' flexDirection='column' rowGap={60}>
@@ -132,7 +132,7 @@ function BookSelection() {
                         rating={volumeInfo.averageRating}
                         authors={volumeInfo.authors}
                         isSelected={libraryState.selectedBook === volumeInfo.title}
-                        handleClick={() => handleBookChange(volumeInfo.title)}
+                        onClick={() => handleBookSelection(volumeInfo.title)}
                       />
                     )
                   })}
@@ -154,7 +154,7 @@ function BookSelection() {
                 hoverTitleColor='purple'
                 padding={10}
                 disabled={disabled}
-                onClick={handleNavigate}
+                onClick={checkBookAndShowModal}
               >
                 Select
                 {disabled && (
