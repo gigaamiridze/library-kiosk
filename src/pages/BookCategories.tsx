@@ -36,7 +36,7 @@ function BookCategories() {
   }
   
   return (
-    <FlexBox as='section' flexDirection='column' rowGap={80}>
+    <FlexBox as='section' flexDirection='column' rowGap={60}>
       <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
         <Heading
           title='Explore your favorite book category 📚'

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { HeaderContainer, Container, FlexBox, Button } from '../styles';
-import { PageRoutes } from '../constants';
-import { Heading } from '../components';
-import { images } from '../assets';
+import { HeaderContainer, Container, FlexBox, Button } from '../../styles';
+import { PageRoutes } from '../../constants';
+import { Heading } from '../../components';
+import { images } from '../../assets';
 
 function Header() {
   return (

@@ -9,7 +9,7 @@ export interface IBookCardProps {
   title: string;
   image: string;
   rating: number;
-  author: string;
+  authors: string[];
   isSelected: boolean;
   handleClick: () => void;
 }

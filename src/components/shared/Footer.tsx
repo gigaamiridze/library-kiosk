@@ -1,5 +1,5 @@
-import { FooterContainer, Container, FlexBox } from '../styles';
-import { Heading } from '../components';
+import { FooterContainer, Container, FlexBox } from '../../styles';
+import { Heading } from '../../components';
 
 function Footer() {
   return (

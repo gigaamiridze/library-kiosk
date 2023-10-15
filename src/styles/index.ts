@@ -1,16 +1,17 @@
-// Header components
+// Header styled components
 export { default as HeaderContainer } from './components/header/HeaderContainer';
 
-// Footer components
+// Footer styled components
 export { default as FooterContainer } from './components/footer/FooterContainer';
 
-// Services page components
+// Main services page styled components
 export { default as ServiceCardContainer } from './components/services/ServiceCardContainer';
 
-// Selection page components
+// Book selection page styled components
 export { default as BookCardContainer } from './components/selection/BookCardContainer';
+export { default as RatingContainer } from './components/selection/RatingContainer';
 
-// Shared components
+// Shared styled components
 export { default as PreLoaderStyled } from './components/shared/PreLoaderStyled';
 export { default as HeadingStyled } from './components/shared/HeadingStyled';
 export { default as SpinnerLoader } from './components/shared/SpinnerLoader';

@@ -1,4 +1,4 @@
-import { PreLoaderStyled } from '../styles';
+import { PreLoaderStyled } from '../../styles';
 
 function PreLoader() {
   return (

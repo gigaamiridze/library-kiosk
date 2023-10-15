@@ -1,5 +1,5 @@
-import { IHeadingProps } from '../interfaces';
-import { HeadingStyled } from '../styles';
+import { IHeadingProps } from '../../interfaces';
+import { HeadingStyled } from '../../styles';
 
 function Heading(props: IHeadingProps) {
   return (

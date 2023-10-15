@@ -1,7 +1,7 @@
 import { BsCaretLeftFill, BsCaretRightFill } from 'react-icons/bs';
-import { IPaginationProps } from '../interfaces';
-import { FlexBox, Button } from '../styles';
-import { Heading } from '../components';
+import { IPaginationProps } from '../../interfaces';
+import { FlexBox, Button } from '../../styles';
+import { Heading } from '../../components';
 
 function Pagination(props: IPaginationProps) {
   const { data, currentPage, setcurrentPage, isPreviousData, isFetching } = props;

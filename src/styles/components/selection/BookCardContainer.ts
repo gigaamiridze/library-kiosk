@@ -22,6 +22,10 @@ const BookCardContainer = styled.div<{ isSelected: boolean }>`
     max-height: 350px;
     object-fit: cover;
   }
+
+  #info {
+    padding: 15px;
+  }
 `;
 
 export default BookCardContainer;

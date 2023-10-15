@@ -44,7 +44,7 @@ function BookSelection() {
   };
 
   return (
-    <FlexBox as='section' flexDirection='column' rowGap={80}>
+    <FlexBox as='section' flexDirection='column' rowGap={60}>
       <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
         <Heading
           title='Explore your favorite books 📚'
@@ -112,7 +112,7 @@ function BookSelection() {
                       title={volumeInfo.title}
                       image={volumeInfo.imageLinks.thumbnail}
                       rating={volumeInfo.averageRating}
-                      author={volumeInfo.authors[0]}
+                      authors={volumeInfo.authors}
                       isSelected={libraryState.selectedBook === volumeInfo.title}
                       handleClick={() => handleBookChange(volumeInfo.title)}
                     />

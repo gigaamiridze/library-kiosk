@@ -1,6 +1,6 @@
-import { ServiceCardContainer, Button } from '../styles';
-import { IServiceCardProps } from '../interfaces';
-import { Heading } from '../components';
+import { ServiceCardContainer, Button } from '../../styles';
+import { IServiceCardProps } from '../../interfaces';
+import { Heading } from '../../components';
 
 function ServiceCard(props: IServiceCardProps) {
   const { image, headingTitle, buttonTitle, handleClick } = props;
