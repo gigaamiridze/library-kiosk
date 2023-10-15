@@ -53,7 +53,7 @@ function BookCategories() {
           textAlign='center'
           lineHeight={86}
         />
-        <Link to={PageRoutes.MAIN_SERVICES} style={{ marginTop: 20 }}>
+        <Link to={PageRoutes.MAIN_SERVICES} style={{ marginTop: 15 }}>
           <Heading
             title='Back To Home'
             type='h5'
