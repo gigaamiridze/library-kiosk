@@ -36,6 +36,17 @@ function Header() {
                   />
                 </Link>
               </li>
+              <li>
+                <Link to={PageRoutes.BOOK_SELECTION}>
+                  <Heading 
+                    title='Book Selection'
+                    type='h6'
+                    fontWeight='500'
+                    hoverColor='purple'
+                    lineHeight={24}
+                  />
+                </Link>
+              </li>
             </FlexBox>
           </nav>
           <Link to={PageRoutes.CONTACT}>
