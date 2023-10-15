@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
 import { PageRoutes, LibraryActions } from '../constants';
 import { Heading, Pagination } from '../components';
 import { getBookCategories } from '../services';
 import { useLibraryContext } from '../contexts';
+import { showWarningMessage } from '../utils';
 
 function BookCategories() {
   const [page, setPage] = useState<number>(0);
-  const { libraryState, dispatchLibrary } = useLibraryContext();
+  const { libraryState: { selectedCategory }, dispatchLibrary } = useLibraryContext();
+  const navigate = useNavigate();
 
   const {
     data: categories,
@@ -23,6 +25,14 @@ function BookCategories() {
 
   const handleCategoryChange = (newCategory: string) => {
     dispatchLibrary({ type: LibraryActions.SELECT_CATEGORY, payload: newCategory });
+  }
+
+  const handleNavigate = () => {
+    if (selectedCategory) {
+      navigate(`${PageRoutes.BOOK_SELECTION}?category=${selectedCategory.toLowerCase()}`);
+    } else {
+      showWarningMessage('Please select a book category');
+    }
   }
   
   return (
@@ -89,7 +99,7 @@ function BookCategories() {
                   <Button 
                     key={category.id}
                     padding={10}
-                    isSelected={libraryState.selectedCategory === category.title}
+                    isSelected={selectedCategory === category.title}
                     onClick={() => handleCategoryChange(category.title)}
                   >
                     {category.title}
@@ -111,7 +121,8 @@ function BookCategories() {
                 hoverBgColor='white'
                 hoverTitleColor='purple'
                 padding={10}
-                disabled={!libraryState.selectedCategory}
+                disabled={!selectedCategory}
+                onClick={handleNavigate}
               >
                 Select  
               </Button>
