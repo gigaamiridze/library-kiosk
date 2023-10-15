@@ -33,6 +33,8 @@ interface IVolumeInfo {
   pageCount: number;
   printType: string;
   categories: string[];
+  averageRating: number;
+  ratingsCount: number;
   maturityRating: string;
   allowAnonLogging: boolean;
   contentVersion: string;

@@ -4,8 +4,11 @@ export { default as HeaderContainer } from './components/header/HeaderContainer'
 // Footer components
 export { default as FooterContainer } from './components/footer/FooterContainer';
 
-// Services components
+// Services page components
 export { default as ServiceCardContainer } from './components/services/ServiceCardContainer';
+
+// Selection page components
+export { default as BookCardContainer } from './components/selection/BookCardContainer';
 
 // Shared components
 export { default as PreLoaderStyled } from './components/shared/PreLoaderStyled';

@@ -1,4 +1,3 @@
-export * from './ServiceCard';
 export * from './Pagination';
 export * from './Heading';
 export * from './FlexBox';
@@ -8,3 +7,4 @@ export * from './Button';
 export * from './Theme';
 export * from './Book';
 export * from './User';
+export * from './Card';

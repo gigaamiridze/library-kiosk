@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
 import { PageRoutes, LibraryActions } from '../constants';
-import { Heading, Pagination } from '../components';
+import { Heading, Pagination, BookCard } from '../components';
 import { getBooksByCategory } from '../services';
 import { useLibraryContext } from '../contexts';
 import { showInfoMessage } from '../utils';
@@ -27,7 +27,7 @@ function BookSelection() {
     isError,
     isFetching,
     isPreviousData,
-  } = useQuery(['books', page], () => getBooksByCategory(page, 5, category), {
+  } = useQuery(['books', page], () => getBooksByCategory(page, 8, category), {
     keepPreviousData: true
   });
 
@@ -97,8 +97,8 @@ function BookSelection() {
               />
             ) : (
               <FlexBox
-                alignItems='center'
-                justifyContent='center'
+                alignItems='flex-start'
+                justifyContent='space-between'
                 flexWrap='wrap'
                 columnGap={20}
                 rowGap={20}
@@ -107,14 +107,15 @@ function BookSelection() {
                   const { volumeInfo } = book;
 
                   return (
-                    <Button
+                    <BookCard
                       key={book.id}
-                      padding={10}
+                      title={volumeInfo.title}
+                      image={volumeInfo.imageLinks.thumbnail}
+                      rating={volumeInfo.averageRating}
+                      author={volumeInfo.authors[0]}
                       isSelected={libraryState.selectedBook === volumeInfo.title}
-                      onClick={() => handleBookChange(volumeInfo.title)}
-                    >
-                      {book.volumeInfo.title}
-                    </Button>
+                      handleClick={() => handleBookChange(volumeInfo.title)}
+                    />
                   )
                 })}
               </FlexBox>
