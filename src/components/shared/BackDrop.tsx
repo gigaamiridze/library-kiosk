@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
-import { BackDropStyled } from '../../styles';
+import { useEffect, useRef, MouseEventHandler } from 'react';
 import { IBackDropProps } from '../../interfaces';
+import { BackDropStyled } from '../../styles';
 
-function BackDrop({ isOpen, children }: IBackDropProps) {
+function BackDrop(props: IBackDropProps) {
+  const { isOpen, children, onClose } = props;
+  const backDropRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
 
@@ -11,9 +14,17 @@ function BackDrop({ isOpen, children }: IBackDropProps) {
     };
   }, [isOpen]);
 
+  const handleBackDrop: MouseEventHandler<HTMLDivElement> = (event) => {
+    if (event.target === backDropRef.current) {
+      onClose();
+    }
+  }
+
   return (
     <BackDropStyled 
+      ref={backDropRef}
       isOpen={isOpen}
+      onClick={handleBackDrop}
     >
       {children}
     </BackDropStyled>

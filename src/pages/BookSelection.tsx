@@ -152,7 +152,10 @@ function BookSelection() {
           </FlexBox>
         </FlexBox>
       </Container>
-      <BackDrop isOpen={isLoginModalOpen}>
+      <BackDrop 
+        isOpen={isLoginModalOpen}
+        onClose={() => setLoginModalOpen(false)}
+      >
         {isLoginModalOpen && <LoginModal onClose={() => setLoginModalOpen(false)} />}
       </BackDrop>
     </FlexBox>

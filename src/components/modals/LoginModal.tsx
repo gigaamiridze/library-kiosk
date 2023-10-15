@@ -12,7 +12,7 @@ function LoginModal({ onClose }: IModalProps) {
   const handleLogin = () => {
     dispatchUser({ type: UserActions.LOGIN_SUCCESS, payload: username });
     onClose();
-  };
+  }
 
   return (
     <ModalContainer>
