@@ -1,4 +1,5 @@
 export { default as ServiceCard } from './ServiceCard';
+export { default as ScrollToTop } from './ScrollToTop';
 export { default as Pagination } from './Pagination';
 export { default as PreLoader } from './PreLoader';
 export { default as ToastNote } from './ToastNote';
