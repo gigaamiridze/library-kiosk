@@ -16,6 +16,7 @@ export interface IColors {
   purple: string;
   orange: string;
   independence: string;
+  backdrop: string;
 }
 
 export interface IFonts {

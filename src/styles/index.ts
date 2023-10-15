@@ -13,6 +13,8 @@ export { default as RatingContainer } from './components/selection/RatingContain
 
 // Shared styled components
 export { default as PreLoaderStyled } from './components/shared/PreLoaderStyled';
+export { default as BackDropStyled } from './components/shared/BackDropStyled';
+export { default as ModalContainer } from './components/shared/ModalContainer';
 export { default as HeadingStyled } from './components/shared/HeadingStyled';
 export { default as SpinnerLoader } from './components/shared/SpinnerLoader';
 export { default as Container } from './components/shared/Container';

@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
+import { Heading, Pagination, BookCard, LoginModal, BackDrop } from '../components';
 import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
+import { useLibraryContext, useUserContext } from '../contexts';
 import { PageRoutes, LibraryActions } from '../constants';
-import { Heading, Pagination, BookCard } from '../components';
 import { getBooksByCategory } from '../services';
-import { useLibraryContext } from '../contexts';
 import { showInfoMessage } from '../utils';
 
 function BookSelection() {
   const navigate = useNavigate();
+  const { userState } = useUserContext();
   const { libraryState, dispatchLibrary } = useLibraryContext();
+  const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
@@ -39,7 +41,11 @@ function BookSelection() {
 
   const handleNavigate = () => {
     if (libraryState.selectedBook) {
-      // TODO
+      if (userState.isAuthenticated) {
+        // TODO: Open Confirmation Modal
+      } else {
+        setLoginModalOpen(true);
+      }
     } else {
       showInfoMessage('Please select a book');
     }
@@ -146,6 +152,9 @@ function BookSelection() {
           </FlexBox>
         </FlexBox>
       </Container>
+      <BackDrop isOpen={isLoginModalOpen}>
+        {isLoginModalOpen && <LoginModal onClose={() => setLoginModalOpen(false)} />}
+      </BackDrop>
     </FlexBox>
   )
 }

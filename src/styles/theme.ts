@@ -8,6 +8,7 @@ export const theme = {
     purple: '#8445EE',
     orange: '#F2B01E',
     independence: '#505070',
+    backdrop: 'rgba(10, 25, 47, 0.40)',
   },
   fonts: {
     primary: '"Montserrat", sans-serif',
@@ -42,7 +43,7 @@ export const theme = {
     circle: '50%',
   },
   animations: {
-    easeInOut: 'all 0.2s ease-in-out',
+    easeInOut: 'all 0.25s ease-in-out',
     easeInfinite: '5s ease infinite',
     linearInfinite: '1s linear infinite',
   },
