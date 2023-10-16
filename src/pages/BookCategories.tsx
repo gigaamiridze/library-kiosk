@@ -6,7 +6,7 @@ import { PageRoutes, LibraryActions } from '../constants';
 import { Heading, Pagination } from '../components';
 import { getBookCategories } from '../services';
 import { useLibraryContext } from '../contexts';
-import { showInfoMessage } from '../utils';
+import { showWarningMessage } from '../utils';
 
 function BookCategories() {
   const [page, setPage] = useState<number>(0);
@@ -40,7 +40,7 @@ function BookCategories() {
 
       return () => clearTimeout(timeoutId);
     } else {
-      showInfoMessage('Please select a book category');
+      showWarningMessage('Please select a book category');
     }
   }
   

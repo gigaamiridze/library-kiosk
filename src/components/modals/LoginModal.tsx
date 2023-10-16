@@ -1,23 +1,56 @@
+import axios from 'axios';
+import { useMutation } from 'react-query';
 import { useState, FormEvent } from 'react';
-import { showErrorMessage, removeWhitespaces } from '../../utils';
+import { showErrorMessage, removeWhitespaces, showSuccessMessage } from '../../utils';
 import { ModalContainer, FlexBox, Button } from '../../styles';
+import { UserActions, Api } from '../../constants';
 import { Heading, Input } from '../../components';
 import { useUserContext } from '../../contexts';
 import { IModalProps } from '../../interfaces';
-import { UserActions } from '../../constants';
 
 function LoginModal({ onClose }: IModalProps) {
-  const { userState, dispatchUser } = useUserContext();
+  const { dispatchUser } = useUserContext();
   const [username, setUsername] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  
+  const mutation = useMutation(
+    async (formData: { username: string; password: string }) => {
+      try {
+        const { data } = await axios.post(Api.AUTH_URL, formData, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-  console.log(username, username.length);
+        return data;
+      } catch (error) {
+        throw new Error('Invalid credentials');
+      }
+    },
+    {
+      onSuccess: (data) => {
+        const { username, email, token } = data;
+
+        dispatchUser({
+          type: UserActions.LOGIN_SUCCESS,
+          payload: { username, email, token },
+        });
+        showSuccessMessage("Congratulations! You've successfully logged into your account");
+        
+        setTimeout(() => {
+          onClose();
+        }, 3000);
+      },
+      onError: (error: Error) => {
+        showErrorMessage(error.message);
+      },
+    }
+  );
 
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
 
-    if (!username || !email || !password) {
+    if (!username || !password) {
       return showErrorMessage('All fields are required');
     }
 
@@ -25,17 +58,11 @@ function LoginModal({ onClose }: IModalProps) {
       return showErrorMessage('Username must be between 4 and 20 characters');
     }
 
-    if (password.length < 8 || password.length > 20) {
+    if (password.length < 6 || password.length > 20) {
       return showErrorMessage('Password must be between 8 and 20 characters');
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return showErrorMessage('Invalid email format');
-    }
-    
-    dispatchUser({ type: UserActions.LOGIN_SUCCESS, payload: { username, email } });
-    onClose();
+    mutation.mutate({ username, password });
   }
   
   return (
@@ -55,13 +82,6 @@ function LoginModal({ onClose }: IModalProps) {
               iconType='username'
               autoComplete='off'
               onChange={(value) => setUsername(removeWhitespaces(value))}
-            />
-            <Input 
-              type='email'
-              placeholder='Enter your email'
-              iconType='email'
-              autoComplete='off'
-              onChange={(value) => setEmail(removeWhitespaces(value))}
             />
             <Input 
               type='password'

@@ -18,19 +18,22 @@ const initialUserState: IUserState = {
   isAuthenticated: false,
   username: null,
   email: null,
+  token: null,
 }
 
 const userReducer = (state: IUserState, action: UserActionType) => {
   switch (action.type) {
     case UserActions.LOGIN_SUCCESS:
+      const { username, email, token } = action.payload;
+      return { ...state, isAuthenticated: true, username, email, token };
+    case UserActions.LOGOUT:
       return { 
         ...state, 
-        isAuthenticated: true, 
-        username: action.payload.username,
-        email: action.payload.email 
+        isAuthenticated: false, 
+        username: null, 
+        email: null, 
+        token: null 
       };
-    case UserActions.LOGOUT:
-      return { ...state, isAuthenticated: false, username: null, email: null };
     default:
       return state;
   }

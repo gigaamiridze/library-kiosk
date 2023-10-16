@@ -6,7 +6,7 @@ import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles'
 import { useLibraryContext, useUserContext } from '../contexts';
 import { PageRoutes, LibraryActions } from '../constants';
 import { getBooksByCategory } from '../services';
-import { showInfoMessage } from '../utils';
+import { showWarningMessage } from '../utils';
 
 function BookSelection() {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ function BookSelection() {
 
       return () => clearTimeout(timeoutId);
     } else {
-      showInfoMessage('Please select a book');
+      showWarningMessage('Please select a book');
     }
   }
 

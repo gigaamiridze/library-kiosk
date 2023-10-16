@@ -4,7 +4,7 @@ import { Api } from '../constants';
 
 export const getBookCategories = async (page: number, maxResults: number) => {
   const startIndex = page * maxResults;
-  const { data } = await axios.get<IBookData>(`${Api.URL}/volumes?q=all&startIndex=${startIndex}&maxResults=${maxResults}&key=${Api.KEY}`);
+  const { data } = await axios.get<IBookData>(`${Api.BOOKS_URL}/volumes?q=all&startIndex=${startIndex}&maxResults=${maxResults}&key=${Api.KEY}`);
   
   const uniqueCategories = new Set<string>();
 
