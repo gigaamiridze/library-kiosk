@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import { BiSolidLockAlt } from 'react-icons/bi';
+import { FaUser, FaBook } from 'react-icons/fa';
 import { IoMdMail } from 'react-icons/io';
-import { FaUser } from 'react-icons/fa';
 import { FieldGroup, InputStyled, InputIcon } from '../../styles';
 import { InputProps } from '../../interfaces';
 
@@ -23,6 +23,8 @@ function Input(props: InputProps) {
         return <IoMdMail />;
       case 'password':
         return <BiSolidLockAlt />;
+      case 'bookId':
+        return <FaBook />;
       default:
         return null;
     }

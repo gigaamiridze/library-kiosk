@@ -18,14 +18,14 @@ function ConfirmationModal({ onClose }: IModalProps) {
       exit='hidden'
     >
       <Heading
-        title={`Borrow Confirmation`}
+        title='Borrow Confirmation'
         type='h3'
         fontWeight='700'
         textAlign='center'
       />
       <FlexBox flexDirection='column' rowGap={15}>
         <Heading 
-          title={`Dear ${userState.username}`}
+          title={`Dear ${userState.username},`}
           type='h5'
           fontWeight='600'
         />
@@ -42,7 +42,7 @@ function ConfirmationModal({ onClose }: IModalProps) {
             fontWeight='600'
           />
           <Heading 
-            title='Kiosk Library'
+            title='Kiosk Library.'
             type='h5'
             fontWeight='600'
           />

@@ -52,7 +52,7 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
         showErrorMessage(error.message);
       },
     }
-  );
+  )
 
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
