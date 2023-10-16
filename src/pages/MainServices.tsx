@@ -5,6 +5,7 @@ import { PageRoutes, LibraryActions } from '../constants';
 import { Container, FlexBox, GrayBlock } from '../styles';
 import { useLibraryContext } from '../contexts';
 import { showInfoMessage } from '../utils';
+import { fadeInOut } from '../animations';
 import { images } from '../assets';
 
 function MainServices() {
@@ -40,7 +41,14 @@ function MainServices() {
   }
   
   return (
-    <FlexBox as='section' flexDirection='column' rowGap={80}>
+    <FlexBox 
+      flexDirection='column' 
+      rowGap={80}
+      variants={fadeInOut}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
       <GrayBlock flexDirection='column' rowGap={20}>
         <Heading
           title='All Your Favorite Books In One Place 📚'

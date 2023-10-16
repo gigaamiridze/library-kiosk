@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { RouterProvider } from 'react-router-dom';
 import { PreLoader, ToastNote } from './components';
 import { GlobalStyles } from './styles';
@@ -10,7 +11,7 @@ function App() {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
-    }, 0);
+    }, 4000);
   
     return () => clearTimeout(timeoutId);
   }, []);
@@ -20,7 +21,12 @@ function App() {
       <GlobalStyles />
       {isLoading 
         ? <PreLoader /> 
-        : <RouterProvider router={router} />
+        : (
+          <AnimatePresence mode='wait'>
+            <RouterProvider router={router} />
+          </AnimatePresence>
+        )
+          
       }
       <ToastNote />
     </>

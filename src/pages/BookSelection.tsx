@@ -7,6 +7,7 @@ import { useLibraryContext, useUserContext } from '../contexts';
 import { PageRoutes, LibraryActions } from '../constants';
 import { getBooksByCategory } from '../services';
 import { showWarningMessage } from '../utils';
+import { fadeInOut } from '../animations';
 import { IBook } from '../interfaces';
 
 function BookSelection() {
@@ -82,7 +83,14 @@ function BookSelection() {
   }
 
   return (
-    <FlexBox as='section' flexDirection='column' rowGap={60}>
+    <FlexBox 
+      flexDirection='column' 
+      rowGap={60}
+      variants={fadeInOut}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
       <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
         <Heading
           title='Explore your favorite books 📚'

@@ -6,7 +6,9 @@ function Root() {
     <>
       <ScrollToTop />
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </>
   )

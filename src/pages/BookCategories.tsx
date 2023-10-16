@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
-import { PageRoutes, LibraryActions } from '../constants';
 import { Heading, Pagination, ButtonWithSpinner } from '../components';
+import { PageRoutes, LibraryActions } from '../constants';
 import { getBookCategories } from '../services';
 import { useLibraryContext } from '../contexts';
 import { showWarningMessage } from '../utils';
+import { fadeInOut } from '../animations';
 
 function BookCategories() {
   const [page, setPage] = useState<number>(0);
@@ -45,7 +46,14 @@ function BookCategories() {
   }
   
   return (
-    <FlexBox as='section' flexDirection='column' rowGap={60}>
+    <FlexBox 
+      flexDirection='column' 
+      rowGap={60}
+      variants={fadeInOut}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
       <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
         <Heading
           title='Explore your favorite book category 📚'

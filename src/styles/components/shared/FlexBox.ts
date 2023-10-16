@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 import { IFlexBoxProps } from '../../../interfaces';
 
-const FlexBox = styled.div<IFlexBoxProps>`
+const FlexBox = styled(motion.div)<IFlexBoxProps>`
   display: flex;
   ${({ flexDirection, alignItems, justifyContent, flexWrap, gap, rowGap, columnGap }) => css`
     flex-direction: ${flexDirection || 'row'};
