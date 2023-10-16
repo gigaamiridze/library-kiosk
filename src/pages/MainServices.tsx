@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heading, ServiceCard, BackDrop, BookIdEntryModal, LoginModal, ConfirmationModal } from '../components';
-import { useUserContext, useLibraryContext } from '../contexts';
+import { useLibraryContext } from '../contexts';
+import { PageRoutes, LibraryActions } from '../constants';
 import { Container, FlexBox, GrayBlock } from '../styles';
-import { PageRoutes } from '../constants';
 import { images } from '../assets';
 
 function MainServices() {
@@ -11,10 +11,18 @@ function MainServices() {
   const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
   const [isBookIdModalOpen, setBookIdModalOpen] = useState<boolean>(false);
   const [isConfirmationModalOpen, setConfirmationModalOpen] = useState<boolean>(false);
-  const { libraryState } = useLibraryContext();
-  const { userState } = useUserContext();
+  const { libraryState, dispatchLibrary } = useLibraryContext();
 
-  console.log(libraryState);
+  const handleConfirmationModalConfirm = () => {
+    dispatchLibrary({ type: LibraryActions.RETURN_SUCCESS });
+
+    const timeoutId = setTimeout(() => {
+      setConfirmationModalOpen(false);
+      navigate(PageRoutes.BOOK_CATEGORIES);
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }
 
   return (
     <FlexBox as='section' flexDirection='column' rowGap={80}>
@@ -83,7 +91,12 @@ function MainServices() {
             onSuccess={() => setConfirmationModalOpen(true)}
           />
         )}
-        {isConfirmationModalOpen && <ConfirmationModal onClose={() => setConfirmationModalOpen(false)} />}
+        {isConfirmationModalOpen && (
+          <ConfirmationModal 
+            type='return'
+            onConfirm={handleConfirmationModalConfirm} 
+          />
+        )}
       </BackDrop>
     </FlexBox>
   )

@@ -65,7 +65,9 @@ function BookSelection() {
     }
   }
 
-  const handleConfirmationModalClose = () => {
+  const handleConfirmationModalConfirm = () => {
+    dispatchLibrary({ type: LibraryActions.BORROW_SUCCESS });
+
     const timeoutId = setTimeout(() => {
       setConfirmationModalOpen(false);
       navigate(PageRoutes.MAIN_SERVICES);
@@ -183,7 +185,12 @@ function BookSelection() {
             onSuccess={() => setConfirmationModalOpen(true)}
           />
         )}
-        {isConfirmationModalOpen && <ConfirmationModal onClose={handleConfirmationModalClose} />}
+        {isConfirmationModalOpen && (
+          <ConfirmationModal 
+            type='borrow'
+            onConfirm={handleConfirmationModalConfirm} 
+          /> 
+        )}
       </BackDrop>
     </FlexBox>
   )

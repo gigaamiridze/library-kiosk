@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useLibraryContext, useUserContext } from '../../contexts';
 import { Heading, ButtonWithSpinner } from '../../components';
+import { IConfirmationModalProps } from '../../interfaces';
 import { ModalContainer, FlexBox } from '../../styles';
-import { IModalProps } from '../../interfaces';
 import { fadeIn } from '../../utils';
 
-function ConfirmationModal({ onClose }: IModalProps) {
+function ConfirmationModal(props: IConfirmationModalProps) {
   const [disabled, setDisabled] = useState<boolean>(false);
+  const { type, onConfirm } = props;
   const { libraryState } = useLibraryContext();
   const { userState } = useUserContext();
   
@@ -18,7 +19,7 @@ function ConfirmationModal({ onClose }: IModalProps) {
       exit='hidden'
     >
       <Heading
-        title='Borrow Confirmation'
+        title={`${type === 'borrow' ? 'Borrow' : 'Return'} Confirmation`}
         type='h3'
         fontWeight='700'
         textAlign='center'
@@ -30,14 +31,14 @@ function ConfirmationModal({ onClose }: IModalProps) {
           fontWeight='600'
         />
         <Heading 
-          title={`Thank you for borrowing the book "${libraryState.selectedBook?.title}". We appreciate your support.`}
+          title={`Thank you for ${type === 'borrow' ? `borrowing the book "${libraryState.selectedBook?.title}"` : 'returning book'}. Your request has been successfully processed.`}
           type='h5'
           fontWeight='600'
           lineHeight={22}
         />
         <FlexBox flexDirection='column' rowGap={5}>
           <Heading 
-            title='Happy Reading!'
+            title={`${type === 'borrow' ? 'Happy Reading!' : 'Good Luck!'}`}
             type='h5'
             fontWeight='600'
           />
@@ -53,7 +54,7 @@ function ConfirmationModal({ onClose }: IModalProps) {
         disabled={disabled} 
         onClick={() => {
           setDisabled(true);
-          onClose();
+          onConfirm();
         }}
       />
     </ModalContainer>

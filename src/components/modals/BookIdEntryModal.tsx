@@ -1,15 +1,14 @@
 import { useState, FormEvent } from 'react';
 import { fadeIn, removeWhitespaces, showErrorMessage, showSuccessMessage } from '../../utils';
 import { Heading, Input, ButtonWithSpinner } from '../../components';
-import { useLibraryContext, useUserContext } from '../../contexts';
 import { ModalContainer, FlexBox, Button } from '../../styles';
 import { IBookIdEntryModalProps } from '../../interfaces';
+import { useLibraryContext } from '../../contexts';
 
 function BookIdEntryModal({ onClose, onConfirm }: IBookIdEntryModalProps) {
   const [bookId, setBookId] = useState<string>('');
   const [disabled, setDisabled] = useState<boolean>(false);
   const { libraryState } = useLibraryContext();
-  const { userState } = useUserContext();
 
   const handleConfirm = (event: FormEvent) => {
     event.preventDefault();

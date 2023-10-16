@@ -28,7 +28,7 @@ const libraryReducer = (state: ILibraryState, action: LibraryActionType) => {
     case LibraryActions.SELECT_BOOK:
       return { ...state, selectedBook: action.payload, borrowError: null };
     case LibraryActions.BORROW_SUCCESS:
-      return { ...state, selectedCategory: null, selectedBook: null, borrowError: null };
+      return { ...state, selectedCategory: null, borrowError: null };
     case LibraryActions.BORROW_FAILURE:
       return { ...state, borrowError: action.payload };
     case LibraryActions.RETURN_SUCCESS:

@@ -1,4 +1,4 @@
-export interface IModalProps {
+interface IModalProps {
   onClose: () => void;
 }
 
@@ -7,5 +7,10 @@ export interface ILoginModalProps extends IModalProps {
 }
 
 export interface IBookIdEntryModalProps extends IModalProps {
+  onConfirm: () => void;
+}
+
+export interface IConfirmationModalProps {
+  type: 'borrow' | 'return';
   onConfirm: () => void;
 }
