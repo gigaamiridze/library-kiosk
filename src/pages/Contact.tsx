@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { FlexBox, GrayBlock, Container, ContactLink } from '../styles';
+import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram  } from 'react-icons/fa';
+import { FlexBox, GrayBlock, Container, ContactLink, Button } from '../styles';
 import { fadeInOut } from '../animations';
 import { PageRoutes } from '../constants';
 import { Heading } from '../components';
@@ -42,7 +43,7 @@ function Contact() {
         </Link>
       </GrayBlock>
       <Container>
-        <FlexBox alignItems='center' justifyContent='space-between'>
+        <FlexBox alignItems='flex-start' justifyContent='space-around'>
           <FlexBox flexDirection='column' rowGap={15}>
             <Heading 
               title='Contact Us'
@@ -75,6 +76,36 @@ function Contact() {
                 fontFamily='secondary'
                 fontWeight='500'
               />
+            </FlexBox>
+          </FlexBox>
+          <FlexBox flexDirection='column' rowGap={15}>
+            <Heading 
+              title='Follow Us'
+              type='h2'
+              fontFamily='secondary'
+              fontWeight='500'
+            />
+            <FlexBox alignItems='center' columnGap={10}>
+              <a href='https://linkedin.com/' target='_blank'>
+                <Button>
+                  <FaLinkedinIn />
+                </Button>
+              </a>
+              <a href='https://twitter.com/' target='_blank'>
+                <Button>
+                  <FaTwitter />
+                </Button>
+              </a>
+              <a href='https://facebook.com/' target='_blank'>
+                <Button>
+                  <FaFacebookF />
+                </Button>
+              </a>
+              <a href='https://instagram.com/' target='_blank'>
+                <Button>
+                  <FaInstagram />
+                </Button>
+              </a>
             </FlexBox>
           </FlexBox>
         </FlexBox>
