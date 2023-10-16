@@ -46,7 +46,7 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
           if (token) {
             onSuccess();
           }
-        }, 3000);
+        }, 2000);
       },
       onError: (error: Error) => {
         showErrorMessage(error.message);

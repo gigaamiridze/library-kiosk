@@ -53,7 +53,7 @@ function BookSelection() {
           setLoginModalOpen(true);
           setDisabled(false);
         }
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timeoutId);
     } else {

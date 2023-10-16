@@ -36,7 +36,7 @@ function BookCategories() {
 
       const timeoutId = setTimeout(() => {
         navigate(`${PageRoutes.BOOK_SELECTION}?category=${selectedCategory?.toLowerCase()}`);
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timeoutId);
     } else {
