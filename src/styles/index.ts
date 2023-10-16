@@ -23,6 +23,9 @@ export { default as FlexBox } from './components/shared/FlexBox';
 export { default as Button } from './components/shared/Button';
 export * from './components/shared/Input';
 
+// Contact styled components
+export { default as ContactLink } from './components/contact/ContactLink';
+
 // Other
 export { default as GlobalStyles } from './Global';
 export * from './theme';
