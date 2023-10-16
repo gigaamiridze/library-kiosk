@@ -6,6 +6,7 @@ export { default as BookCard } from './selection/BookCard';
 export { default as Rating } from './selection/Rating';
 
 // Modal components
+export { default as ConfirmationModal } from './modals/ConfirmationModal';
 export { default as LoginModal } from './modals/LoginModal';
 
 // Shared components

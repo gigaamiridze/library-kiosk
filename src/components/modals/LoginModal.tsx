@@ -3,13 +3,13 @@ import { useMutation } from 'react-query';
 import { useState, FormEvent } from 'react';
 import { showErrorMessage, removeWhitespaces, showSuccessMessage } from '../../utils';
 import { ModalContainer, FlexBox, Button } from '../../styles';
+import { ILoginModalProps } from '../../interfaces';
 import { UserActions, Api } from '../../constants';
 import { Heading, Input } from '../../components';
 import { useUserContext } from '../../contexts';
-import { IModalProps } from '../../interfaces';
 
-function LoginModal({ onClose }: IModalProps) {
-  const { dispatchUser } = useUserContext();
+function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
+  const { userState, dispatchUser } = useUserContext();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   
@@ -31,6 +31,8 @@ function LoginModal({ onClose }: IModalProps) {
       onSuccess: (data) => {
         const { username, email, token } = data;
 
+        console.log(data);
+
         dispatchUser({
           type: UserActions.LOGIN_SUCCESS,
           payload: { username, email, token },
@@ -39,6 +41,10 @@ function LoginModal({ onClose }: IModalProps) {
         
         setTimeout(() => {
           onClose();
+          
+          if (token) {
+            onSuccess();
+          }
         }, 3000);
       },
       onError: (error: Error) => {
@@ -107,6 +113,7 @@ function LoginModal({ onClose }: IModalProps) {
           </FlexBox>
         </FlexBox>
       </form>
+      {userState.isAuthenticated ? 'authenticated' : 'non-authenticated'}
     </ModalContainer>
   )
 }

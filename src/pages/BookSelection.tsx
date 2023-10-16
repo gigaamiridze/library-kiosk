@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
+import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
-import { Heading, Pagination, BookCard, LoginModal, BackDrop } from '../components';
+import { Heading, Pagination, BookCard, LoginModal, BackDrop, ConfirmationModal } from '../components';
 import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
 import { useLibraryContext, useUserContext } from '../contexts';
 import { PageRoutes, LibraryActions } from '../constants';
@@ -13,8 +13,9 @@ function BookSelection() {
   const { userState } = useUserContext();
   const { libraryState, dispatchLibrary } = useLibraryContext();
   const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(0);
+  const [isConfirmationModalOpen, setConfirmationModalOpen] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(0);
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
 
@@ -46,7 +47,7 @@ function BookSelection() {
 
       const timeoutId = setTimeout(() => {
         if (userState.isAuthenticated) {
-          // TODO: Open Confirmation Modal
+          setConfirmationModalOpen(true);
           setDisabled(false);
         } else {
           setLoginModalOpen(true);
@@ -58,6 +59,15 @@ function BookSelection() {
     } else {
       showWarningMessage('Please select a book');
     }
+  }
+
+  const handleConfirmationModalClose = () => {
+    const timeoutId = setTimeout(() => {
+      setConfirmationModalOpen(false);
+      navigate(PageRoutes.MAIN_SERVICES);
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
   }
 
   return (
@@ -166,10 +176,19 @@ function BookSelection() {
         </FlexBox>
       </Container>
       <BackDrop 
-        isOpen={isLoginModalOpen}
-        onClose={() => setLoginModalOpen(false)}
+        isOpen={isLoginModalOpen || isConfirmationModalOpen}
+        onClose={() => {
+          setLoginModalOpen(false);
+          setConfirmationModalOpen(false);
+        }}
       >
-        {isLoginModalOpen && <LoginModal onClose={() => setLoginModalOpen(false)} />}
+        {isLoginModalOpen && (
+          <LoginModal 
+            onClose={() => setLoginModalOpen(false)} 
+            onSuccess={() => setConfirmationModalOpen(true)}
+          />
+        )}
+        {isConfirmationModalOpen && <ConfirmationModal onClose={handleConfirmationModalClose} />}
       </BackDrop>
     </FlexBox>
   )
