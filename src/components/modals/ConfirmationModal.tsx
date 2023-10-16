@@ -2,12 +2,18 @@ import { useState } from 'react';
 import { Heading, ButtonWithSpinner } from '../../components';
 import { IModalProps } from '../../interfaces';
 import { ModalContainer } from '../../styles';
+import { fadeIn } from '../../utils';
 
 function ConfirmationModal({ onClose }: IModalProps) {
   const [disabled, setDisabled] = useState<boolean>(false);
   
   return (
-    <ModalContainer flexDirection='column' rowGap={30}>
+    <ModalContainer
+      variants={fadeIn('down', 150, 0.3)}
+      initial='hidden'
+      animate='visible'
+      exit='hidden'
+    >
       <Heading
         title='Book Borrowed Successfully!'
         type='h3'

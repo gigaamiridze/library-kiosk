@@ -7,6 +7,7 @@ import { ModalContainer, FlexBox, Button } from '../../styles';
 import { ILoginModalProps } from '../../interfaces';
 import { UserActions, Api } from '../../constants';
 import { useUserContext } from '../../contexts';
+import { fadeIn } from '../../utils';
 
 function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
   const { dispatchUser } = useUserContext();
@@ -72,7 +73,12 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
   }
   
   return (
-    <ModalContainer flexDirection='column' rowGap={30}>
+    <ModalContainer
+      variants={fadeIn('down', 150, 0.3)}
+      initial='hidden'
+      animate='visible'
+      exit='hidden'
+    >
       <Heading 
         title='Login to your account'
         type='h3'
