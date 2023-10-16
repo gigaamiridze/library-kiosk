@@ -3,7 +3,7 @@ import { useLibraryContext, useUserContext } from '../../contexts';
 import { Heading, ButtonWithSpinner } from '../../components';
 import { IConfirmationModalProps } from '../../interfaces';
 import { ModalContainer, FlexBox } from '../../styles';
-import { fadeIn } from '../../utils';
+import { fadeIn } from '../../animations';
 
 function ConfirmationModal(props: IConfirmationModalProps) {
   const [disabled, setDisabled] = useState<boolean>(false);

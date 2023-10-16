@@ -7,7 +7,7 @@ import { ModalContainer, FlexBox, Button } from '../../styles';
 import { ILoginModalProps } from '../../interfaces';
 import { UserActions, Api } from '../../constants';
 import { useUserContext } from '../../contexts';
-import { fadeIn } from '../../utils';
+import { fadeIn } from '../../animations';
 
 function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
   const { dispatchUser } = useUserContext();

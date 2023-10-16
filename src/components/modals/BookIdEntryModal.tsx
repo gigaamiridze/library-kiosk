@@ -1,9 +1,10 @@
 import { useState, FormEvent } from 'react';
-import { fadeIn, removeWhitespaces, showErrorMessage, showSuccessMessage } from '../../utils';
+import { removeWhitespaces, showErrorMessage, showSuccessMessage } from '../../utils';
 import { Heading, Input, ButtonWithSpinner } from '../../components';
 import { ModalContainer, FlexBox, Button } from '../../styles';
 import { IBookIdEntryModalProps } from '../../interfaces';
 import { useLibraryContext } from '../../contexts';
+import { fadeIn } from '../../animations';
 
 function BookIdEntryModal({ onClose, onConfirm }: IBookIdEntryModalProps) {
   const [bookId, setBookId] = useState<string>('');
