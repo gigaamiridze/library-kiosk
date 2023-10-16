@@ -40,7 +40,7 @@ function BookCategories() {
 
       return () => clearTimeout(timeoutId);
     } else {
-      showWarningMessage('Please select a book category');
+      showWarningMessage('Please select a book category.');
     }
   }
   

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heading, ServiceCard, BackDrop, BookIdEntryModal, LoginModal, ConfirmationModal } from '../components';
-import { useLibraryContext } from '../contexts';
 import { PageRoutes, LibraryActions } from '../constants';
 import { Container, FlexBox, GrayBlock } from '../styles';
+import { useLibraryContext } from '../contexts';
+import { showInfoMessage } from '../utils';
 import { images } from '../assets';
 
 function MainServices() {
@@ -24,6 +25,20 @@ function MainServices() {
     return () => clearTimeout(timeoutId);
   }
 
+  const handleReturnBookButtonClick = () => {
+    if (!libraryState.selectedBook?.id) {
+      showInfoMessage("You haven't borrowed a book yet, please borrow a book.");
+    } else {
+      setBookIdModalOpen(true);
+    }
+  }
+
+  const handleBackDropClose = () => {
+    setLoginModalOpen(false);
+    setBookIdModalOpen(false);
+    setConfirmationModalOpen(false);
+  }
+  
   return (
     <FlexBox as='section' flexDirection='column' rowGap={80}>
       <GrayBlock flexDirection='column' rowGap={20}>
@@ -63,18 +78,14 @@ function MainServices() {
               image={images.returnBook}
               headingTitle='Complete the journey. Return your borrowed books hassle-free and share the reading joy.'
               buttonTitle='Return a Book'
-              onClick={() => setBookIdModalOpen(true)}
+              onClick={handleReturnBookButtonClick}
             />
           </FlexBox>
         </FlexBox>
       </Container>
       <BackDrop
         isOpen={isBookIdModalOpen || isLoginModalOpen || isConfirmationModalOpen}
-        onClose={() => {
-          setLoginModalOpen(false);
-          setBookIdModalOpen(false);
-          setConfirmationModalOpen(false);
-        }}
+        onClose={handleBackDropClose}
       >
         {isBookIdModalOpen && (
           <BookIdEntryModal 

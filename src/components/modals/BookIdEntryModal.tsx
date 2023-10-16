@@ -14,7 +14,7 @@ function BookIdEntryModal({ onClose, onConfirm }: IBookIdEntryModalProps) {
     event.preventDefault();
 
     if (!bookId) {
-      return showErrorMessage('Book ID field is required');
+      return showErrorMessage('Book ID field is required.');
     }
 
     if (bookId === libraryState.selectedBook?.id) {
@@ -27,7 +27,7 @@ function BookIdEntryModal({ onClose, onConfirm }: IBookIdEntryModalProps) {
 
       return () => clearTimeout(timeoutId);
     } else {
-      showErrorMessage('Invalid Book ID. Please check and try again');
+      showErrorMessage('Invalid Book ID. Please check and try again.');
     }
   }
 

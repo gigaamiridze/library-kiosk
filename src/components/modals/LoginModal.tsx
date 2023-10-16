@@ -26,7 +26,7 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
 
         return data;
       } catch (error) {
-        throw new Error('Invalid credentials');
+        throw new Error('Invalid credentials.');
       }
     },
     {
@@ -38,7 +38,7 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
           type: UserActions.LOGIN_SUCCESS,
           payload: { username, email, token },
         });
-        showSuccessMessage("Congratulations! You've successfully logged into your account");
+        showSuccessMessage("Congratulations! You've successfully logged into your account.");
         
         setTimeout(() => {
           onClose();
@@ -58,15 +58,15 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
     event.preventDefault();
 
     if (!username || !password) {
-      return showErrorMessage('All fields are required');
+      return showErrorMessage('All fields are required.');
     }
 
     if (username.length < 4 || username.length > 20) {
-      return showErrorMessage('Username must be between 4 and 20 characters');
+      return showErrorMessage('Username must be between 4 and 20 characters.');
     }
 
     if (password.length < 6 || password.length > 20) {
-      return showErrorMessage('Password must be between 8 and 20 characters');
+      return showErrorMessage('Password must be between 8 and 20 characters.');
     }
 
     mutation.mutate({ username, password });

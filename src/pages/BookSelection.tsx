@@ -61,7 +61,7 @@ function BookSelection() {
 
       return () => clearTimeout(timeoutId);
     } else {
-      showWarningMessage('Please select a book');
+      showWarningMessage('Please select a book.');
     }
   }
 
@@ -74,6 +74,11 @@ function BookSelection() {
     }, 2000);
 
     return () => clearTimeout(timeoutId);
+  }
+
+  const handleBackDropClose = () => {
+    setLoginModalOpen(false);
+    setConfirmationModalOpen(false);
   }
 
   return (
@@ -174,10 +179,7 @@ function BookSelection() {
       </Container>
       <BackDrop 
         isOpen={isLoginModalOpen || isConfirmationModalOpen}
-        onClose={() => {
-          setLoginModalOpen(false);
-          setConfirmationModalOpen(false);
-        }}
+        onClose={handleBackDropClose}
       >
         {isLoginModalOpen && (
           <LoginModal 
