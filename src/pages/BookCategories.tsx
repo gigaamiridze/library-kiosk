@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
 import { PageRoutes, LibraryActions } from '../constants';
-import { Heading, Pagination } from '../components';
+import { Heading, Pagination, ButtonWithSpinner } from '../components';
 import { getBookCategories } from '../services';
 import { useLibraryContext } from '../contexts';
 import { showWarningMessage } from '../utils';
@@ -126,20 +126,11 @@ function BookCategories() {
                 isPreviousData={isPreviousData}
                 isFetching={isFetching}
               />
-              <Button 
-                backgroundColor='purple'
-                titleColor='white'
-                hoverBgColor='white'
-                hoverTitleColor='purple'
-                padding={10}
-                disabled={disabled}
+              <ButtonWithSpinner 
+                title='Select'
+                disabled={disabled} 
                 onClick={handleNavigate}
-              >
-                Select
-                {disabled && (
-                  <SpinnerLoader size={19} color='gainsboro' />
-                )}
-              </Button>
+              />
             </FlexBox>
           </FlexBox>
         </FlexBox>

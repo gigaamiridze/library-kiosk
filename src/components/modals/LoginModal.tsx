@@ -2,16 +2,17 @@ import axios from 'axios';
 import { useMutation } from 'react-query';
 import { useState, FormEvent } from 'react';
 import { showErrorMessage, removeWhitespaces, showSuccessMessage } from '../../utils';
+import { Heading, Input, ButtonWithSpinner } from '../../components';
 import { ModalContainer, FlexBox, Button } from '../../styles';
 import { ILoginModalProps } from '../../interfaces';
 import { UserActions, Api } from '../../constants';
-import { Heading, Input } from '../../components';
 import { useUserContext } from '../../contexts';
 
 function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
-  const { userState, dispatchUser } = useUserContext();
+  const { dispatchUser } = useUserContext();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [disabled, setDisabled] = useState<boolean>(false);
   
   const mutation = useMutation(
     async (formData: { username: string; password: string }) => {
@@ -29,9 +30,8 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
     },
     {
       onSuccess: (data) => {
+        setDisabled(true);
         const { username, email, token } = data;
-
-        console.log(data);
 
         dispatchUser({
           type: UserActions.LOGIN_SUCCESS,
@@ -98,13 +98,16 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
             />
           </FlexBox>
           <FlexBox alignItems='center' columnGap={20}>
-            <Button 
-              padding={10}
+            <ButtonWithSpinner 
+              title='Login'
+              disabled={disabled}
               onClick={handleLogin}
-            >
-              Login  
-            </Button>
+            />
             <Button 
+              backgroundColor='purple'
+              titleColor='white'
+              hoverBgColor='white'
+              hoverTitleColor='purple'
               padding={10}
               onClick={onClose}
             >
@@ -113,7 +116,6 @@ function LoginModal({ onClose, onSuccess }: ILoginModalProps) {
           </FlexBox>
         </FlexBox>
       </form>
-      {userState.isAuthenticated ? 'authenticated' : 'non-authenticated'}
     </ModalContainer>
   )
 }

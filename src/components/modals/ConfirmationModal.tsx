@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ModalContainer, Button, SpinnerLoader } from '../../styles';
+import { Heading, ButtonWithSpinner } from '../../components';
 import { IModalProps } from '../../interfaces';
-import { Heading } from '../../components';
+import { ModalContainer } from '../../styles';
 
 function ConfirmationModal({ onClose }: IModalProps) {
   const [disabled, setDisabled] = useState<boolean>(false);
@@ -14,19 +14,14 @@ function ConfirmationModal({ onClose }: IModalProps) {
         fontWeight='700'
         textAlign='center'
       />
-      <Button
-        padding={10}
-        disabled={disabled}
+      <ButtonWithSpinner 
+        title='OK'
+        disabled={disabled} 
         onClick={() => {
           setDisabled(true);
           onClose();
         }}
-      >
-        OK
-        {disabled && (
-          <SpinnerLoader size={19} color='gainsboro' />
-        )}
-      </Button>
+      />
     </ModalContainer>
   )
 }

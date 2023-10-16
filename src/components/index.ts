@@ -10,6 +10,7 @@ export { default as ConfirmationModal } from './modals/ConfirmationModal';
 export { default as LoginModal } from './modals/LoginModal';
 
 // Shared components
+export { default as ButtonWithSpinner } from './shared/ButtonWithSpinner';
 export { default as ScrollToTop } from './shared/ScrollToTop';
 export { default as Pagination } from './shared/Pagination';
 export { default as PreLoader } from './shared/PreLoader';

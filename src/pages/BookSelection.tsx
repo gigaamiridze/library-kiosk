@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
-import { Heading, Pagination, BookCard, LoginModal, BackDrop, ConfirmationModal } from '../components';
-import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
+import { Heading, Pagination, BookCard, LoginModal, BackDrop, ConfirmationModal, ButtonWithSpinner } from '../components';
+import { Container, FlexBox, GrayBlock, SpinnerLoader } from '../styles';
 import { useLibraryContext, useUserContext } from '../contexts';
 import { PageRoutes, LibraryActions } from '../constants';
 import { getBooksByCategory } from '../services';
@@ -157,20 +157,11 @@ function BookSelection() {
                 isPreviousData={isPreviousData}
                 isFetching={isFetching}
               />
-              <Button
-                backgroundColor='purple'
-                titleColor='white'
-                hoverBgColor='white'
-                hoverTitleColor='purple'
-                padding={10}
-                disabled={disabled}
+              <ButtonWithSpinner 
+                title='Select'
+                disabled={disabled} 
                 onClick={checkBookAndShowModal}
-              >
-                Select
-                {disabled && (
-                  <SpinnerLoader size={19} color='gainsboro' />
-                )}
-              </Button>
+              />
             </FlexBox>
           </FlexBox>
         </FlexBox>
