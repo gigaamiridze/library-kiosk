@@ -7,6 +7,7 @@ import { useLibraryContext, useUserContext } from '../contexts';
 import { PageRoutes, LibraryActions } from '../constants';
 import { getBooksByCategory } from '../services';
 import { showWarningMessage } from '../utils';
+import { IBook } from '../interfaces';
 
 function BookSelection() {
   const navigate = useNavigate();
@@ -37,8 +38,11 @@ function BookSelection() {
     cacheTime: 3600000, // 1 hour in milliseconds
   });
 
-  const handleBookSelection = (newBook: string) => {
-    dispatchLibrary({ type: LibraryActions.SELECT_BOOK, payload: newBook });
+  const handleBookSelection = (book: IBook) => {
+    dispatchLibrary({ type: LibraryActions.SELECT_BOOK, payload: {
+      id: book.id,
+      title: book.volumeInfo.title,
+    }});
   };
 
   const checkBookAndShowModal = () => {
@@ -141,8 +145,8 @@ function BookSelection() {
                         image={volumeInfo.imageLinks ? volumeInfo.imageLinks.smallThumbnail : undefined}
                         rating={volumeInfo.averageRating}
                         authors={volumeInfo.authors}
-                        isSelected={libraryState.selectedBook === volumeInfo.title}
-                        onClick={() => handleBookSelection(volumeInfo.title)}
+                        isSelected={libraryState.selectedBook?.title === volumeInfo.title}
+                        onClick={() => handleBookSelection(book)}
                       />
                     )
                   })}

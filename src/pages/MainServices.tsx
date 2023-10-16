@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heading, ServiceCard, BackDrop, BookIdEntryModal, LoginModal, ConfirmationModal } from '../components';
+import { useUserContext, useLibraryContext } from '../contexts';
 import { Container, FlexBox, GrayBlock } from '../styles';
 import { PageRoutes } from '../constants';
 import { images } from '../assets';
@@ -10,6 +11,10 @@ function MainServices() {
   const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
   const [isBookIdModalOpen, setBookIdModalOpen] = useState<boolean>(false);
   const [isConfirmationModalOpen, setConfirmationModalOpen] = useState<boolean>(false);
+  const { libraryState } = useLibraryContext();
+  const { userState } = useUserContext();
+
+  console.log(libraryState);
 
   return (
     <FlexBox as='section' flexDirection='column' rowGap={80}>
@@ -63,7 +68,15 @@ function MainServices() {
           setConfirmationModalOpen(false);
         }}
       >
-        {isBookIdModalOpen && <BookIdEntryModal onClose={() => setBookIdModalOpen(false)} />}
+        {isBookIdModalOpen && (
+          <BookIdEntryModal 
+            onClose={() => setBookIdModalOpen(false)} 
+            onConfirm={() => {
+              setBookIdModalOpen(false);
+              setLoginModalOpen(true);
+            }}
+          />
+        )}
         {isLoginModalOpen && (
           <LoginModal
             onClose={() => setLoginModalOpen(false)}

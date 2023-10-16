@@ -30,7 +30,7 @@ function ConfirmationModal({ onClose }: IModalProps) {
           fontWeight='600'
         />
         <Heading 
-          title={`Thank you for borrowing the book "${libraryState.selectedBook}". We appreciate your support.`}
+          title={`Thank you for borrowing the book "${libraryState.selectedBook?.title}". We appreciate your support.`}
           type='h5'
           fontWeight='600'
           lineHeight={22}

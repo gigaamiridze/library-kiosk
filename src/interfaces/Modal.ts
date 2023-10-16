@@ -7,5 +7,5 @@ export interface ILoginModalProps extends IModalProps {
 }
 
 export interface IBookIdEntryModalProps extends IModalProps {
-  onConfirm: (bookId: string) => void;
+  onConfirm: () => void;
 }

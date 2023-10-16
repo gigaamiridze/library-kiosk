@@ -1,14 +1,36 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
+import { fadeIn, removeWhitespaces, showErrorMessage, showSuccessMessage } from '../../utils';
 import { Heading, Input, ButtonWithSpinner } from '../../components';
+import { useLibraryContext, useUserContext } from '../../contexts';
 import { ModalContainer, FlexBox, Button } from '../../styles';
-import { fadeIn, removeWhitespaces } from '../../utils';
 import { IBookIdEntryModalProps } from '../../interfaces';
 
 function BookIdEntryModal({ onClose, onConfirm }: IBookIdEntryModalProps) {
   const [bookId, setBookId] = useState<string>('');
   const [disabled, setDisabled] = useState<boolean>(false);
+  const { libraryState } = useLibraryContext();
+  const { userState } = useUserContext();
 
-  const handleConfirm = () => {}
+  const handleConfirm = (event: FormEvent) => {
+    event.preventDefault();
+
+    if (!bookId) {
+      return showErrorMessage('Book ID field is required');
+    }
+
+    if (bookId === libraryState.selectedBook?.id) {
+      setDisabled(true);
+      showSuccessMessage('Book ID is correct. thank you!');
+
+      const timeoutId = setTimeout(() => {
+        onConfirm();
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    } else {
+      showErrorMessage('Invalid Book ID. Please check and try again');
+    }
+  }
 
   return (
     <ModalContainer
@@ -18,12 +40,12 @@ function BookIdEntryModal({ onClose, onConfirm }: IBookIdEntryModalProps) {
       exit='hidden'
     >
       <Heading
-        title='Return book'
+        title='Return a book'
         type='h3'
         fontWeight='700'
         textAlign='center'
       />
-      <form>
+      <form onSubmit={handleConfirm}>
         <FlexBox flexDirection='column' rowGap={30}>
           <Input 
             type='text'

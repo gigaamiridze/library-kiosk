@@ -8,3 +8,9 @@ export interface IButtonProps {
   isSelected?: boolean;
   padding?: number; 
 }
+
+export interface IButtonWithSpinnerProps {
+  title: string;
+  disabled: boolean;
+  onClick: (param?: any) => void;
+}

@@ -9,7 +9,7 @@ export interface IBookCategory {
   title: string;
 }
 
-interface IBook {
+export interface IBook {
   kind: string;
   id: string;
   etag: string;
