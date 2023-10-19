@@ -1,12 +1,12 @@
 import { useQuery } from 'react-query';
 import { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams, Link } from 'react-router-dom';
-import { Heading, Pagination, BookCard, LoginModal, BackDrop, ConfirmationModal, ButtonWithSpinner } from '../components';
-import { Container, FlexBox, GrayBlock, SpinnerLoader } from '../styles';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Heading, Pagination, BookCard, LoginModal, BackDrop, ConfirmationModal, ButtonWithSpinner, WelcomeSection } from '../components';
 import { useLibraryContext, useUserContext } from '../contexts';
+import { Container, FlexBox, SpinnerLoader } from '../styles';
 import { PageRoutes, LibraryActions } from '../constants';
-import { getBooksByCategory } from '../services';
 import { showWarningMessage } from '../utils';
+import { getBooksByCategory } from '../api';
 import { fadeInOut } from '../animations';
 import { IBook } from '../interfaces';
 
@@ -40,10 +40,12 @@ function BookSelection() {
   });
 
   const handleBookSelection = (book: IBook) => {
-    dispatchLibrary({ type: LibraryActions.SELECT_BOOK, payload: {
-      id: book.id,
-      title: book.volumeInfo.title,
-    }});
+    dispatchLibrary({
+      type: LibraryActions.SELECT_BOOK, payload: {
+        id: book.id,
+        title: book.volumeInfo.title,
+      }
+    });
   };
 
   const checkBookAndShowModal = () => {
@@ -83,41 +85,20 @@ function BookSelection() {
   }
 
   return (
-    <FlexBox 
-      flexDirection='column' 
+    <FlexBox
+      flexDirection='column'
       rowGap={60}
       variants={fadeInOut}
       initial='initial'
       animate='animate'
       exit='exit'
     >
-      <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
-        <Heading
-          title='Explore your favorite books 📚'
-          type='h4'
-          fontWeight='600'
-          textAlign='center'
-          lineHeight={24}
-        />
-        <Heading
-          title='Selection'
-          type='h1'
-          fontFamily='secondary'
-          fontWeight='500'
-          textAlign='center'
-          lineHeight={86}
-        />
-        <Link to={PageRoutes.BOOK_CATEGORIES} style={{ marginTop: 15 }}>
-          <Heading
-            title='Back To Category Page'
-            type='h5'
-            color='purple'
-            fontWeight='500'
-            textAlign='center'
-            lineHeight={24}
-          />
-        </Link>
-      </GrayBlock>
+      <WelcomeSection
+        smallTitle='Explore your favorite books'
+        bigTitle='Selection'
+        backTitle='Back To Category Page'
+        onBack={() => navigate(PageRoutes.BOOK_CATEGORIES)}
+      />
       <Container>
         <FlexBox flexDirection='column' rowGap={50}>
           <Heading
@@ -176,30 +157,30 @@ function BookSelection() {
                 isPreviousData={isPreviousData}
                 isFetching={isFetching}
               />
-              <ButtonWithSpinner 
+              <ButtonWithSpinner
                 title='Select'
-                disabled={disabled} 
+                disabled={disabled}
                 onClick={checkBookAndShowModal}
               />
             </FlexBox>
           </FlexBox>
         </FlexBox>
       </Container>
-      <BackDrop 
+      <BackDrop
         isOpen={isLoginModalOpen || isConfirmationModalOpen}
         onClose={handleBackDropClose}
       >
         {isLoginModalOpen && (
-          <LoginModal 
-            onClose={() => setLoginModalOpen(false)} 
+          <LoginModal
+            onClose={() => setLoginModalOpen(false)}
             onSuccess={() => setConfirmationModalOpen(true)}
           />
         )}
         {isConfirmationModalOpen && (
-          <ConfirmationModal 
+          <ConfirmationModal
             type='borrow'
-            onConfirm={handleConfirmationModalConfirm} 
-          /> 
+            onConfirm={handleConfirmationModalConfirm}
+          />
         )}
       </BackDrop>
     </FlexBox>

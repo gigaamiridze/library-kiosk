@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heading, ServiceCard, BackDrop, BookIdEntryModal, LoginModal, ConfirmationModal } from '../components';
+import { Heading, ServiceCard, BackDrop, BookIdEntryModal, LoginModal, ConfirmationModal, WelcomeSection } from '../components';
 import { PageRoutes, LibraryActions } from '../constants';
-import { Container, FlexBox, GrayBlock } from '../styles';
 import { useLibraryContext } from '../contexts';
+import { Container, FlexBox } from '../styles';
 import { showInfoMessage } from '../utils';
 import { fadeInOut } from '../animations';
 import { images } from '../assets';
@@ -49,23 +49,10 @@ function MainServices() {
       animate='animate'
       exit='exit'
     >
-      <GrayBlock flexDirection='column' rowGap={20}>
-        <Heading
-          title='All Your Favorite Books In One Place 📚'
-          type='h4'
-          fontWeight='600'
-          textAlign='center'
-          lineHeight={24}
-        />
-        <Heading
-          title='Largest Digital Library Of Bestselling eBooks'
-          type='h1'
-          fontFamily='secondary'
-          fontWeight='500'
-          textAlign='center'
-          lineHeight={86}
-        />
-      </GrayBlock>
+      <WelcomeSection 
+        smallTitle='All Your Favorite Books In One Place'
+        bigTitle='Largest Digital Library Of Bestselling eBooks'
+      />
       <Container>
         <FlexBox flexDirection='column' rowGap={40}>
           <Heading

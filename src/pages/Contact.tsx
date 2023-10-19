@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram  } from 'react-icons/fa';
-import { FlexBox, GrayBlock, Container, ContactLink, Button } from '../styles';
-import { fadeInOut } from '../animations';
+import { FlexBox, Container, ContactLink, Button } from '../styles';
+import { Heading, WelcomeSection } from '../components';
 import { PageRoutes } from '../constants';
-import { Heading } from '../components';
+import { fadeInOut } from '../animations';
 
 function Contact() {
+  const navigate = useNavigate();
+
   return (
     <FlexBox
       flexDirection='column'
@@ -15,33 +17,12 @@ function Contact() {
       animate='animate'
       exit='exit'
     >
-      <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
-        <Heading
-          title='All Your Favorite Books In One Place 📚'
-          type='h4'
-          fontWeight='600'
-          textAlign='center'
-          lineHeight={24}
-        />
-        <Heading
-          title='Contact Now'
-          type='h1'
-          fontFamily='secondary'
-          fontWeight='500'
-          textAlign='center'
-          lineHeight={86}
-        />
-        <Link to={PageRoutes.MAIN_SERVICES} style={{ marginTop: 15 }}>
-          <Heading
-            title='Back To Home'
-            type='h5'
-            color='purple'
-            fontWeight='500'
-            textAlign='center'
-            lineHeight={24}
-          />
-        </Link>
-      </GrayBlock>
+      <WelcomeSection
+        smallTitle='All Your Favorite Books In One Place'
+        bigTitle='Contact Now'
+        backTitle='Back To Home'
+        onBack={() => navigate(PageRoutes.MAIN_SERVICES)}
+      />
       <Container>
         <FlexBox alignItems='flex-start' justifyContent='space-around'>
           <FlexBox flexDirection='column' rowGap={15}>

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { Link, useNavigate } from 'react-router-dom';
-import { Container, FlexBox, GrayBlock, SpinnerLoader, Button } from '../styles';
-import { Heading, Pagination, ButtonWithSpinner } from '../components';
+import {  useNavigate } from 'react-router-dom';
+import { Heading, Pagination, ButtonWithSpinner, WelcomeSection } from '../components';
+import { Container, FlexBox, SpinnerLoader, Button } from '../styles';
 import { PageRoutes, LibraryActions } from '../constants';
-import { getBookCategories } from '../services';
 import { useLibraryContext } from '../contexts';
 import { showWarningMessage } from '../utils';
+import { getBookCategories } from '../api';
 import { fadeInOut } from '../animations';
 
 function BookCategories() {
@@ -54,33 +54,12 @@ function BookCategories() {
       animate='animate'
       exit='exit'
     >
-      <GrayBlock flexDirection='column' alignItems='center' rowGap={20}>
-        <Heading
-          title='Explore your favorite book category 📚'
-          type='h4'
-          fontWeight='600'
-          textAlign='center'
-          lineHeight={24}
-        />
-        <Heading
-          title='Categories'
-          type='h1'
-          fontFamily='secondary'
-          fontWeight='500'
-          textAlign='center'
-          lineHeight={86}
-        />
-        <Link to={PageRoutes.MAIN_SERVICES} style={{ marginTop: 15 }}>
-          <Heading
-            title='Back To Home'
-            type='h5'
-            color='purple'
-            fontWeight='500'
-            textAlign='center'
-            lineHeight={24}
-          />
-        </Link>
-      </GrayBlock>
+      <WelcomeSection
+        smallTitle='Explore your favorite book category'
+        bigTitle='Categories'
+        backTitle='Back To Home'
+        onBack={() => navigate(PageRoutes.MAIN_SERVICES)}
+      />
       <Container>
         <FlexBox flexDirection='column' rowGap={50}>
           <Heading 

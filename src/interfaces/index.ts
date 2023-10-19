@@ -1,3 +1,4 @@
+export * from './WelcomeSection';
 export * from './Pagination';
 export * from './BackDrop';
 export * from './Heading';
