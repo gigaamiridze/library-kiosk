@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram  } from 'react-icons/fa';
-import { FlexBox, Container, ContactLink, Button } from '../styles';
+import { FlexBox, Container, ContactLink, ContactTitle, Button } from '../styles';
 import { Heading, WelcomeSection } from '../components';
 import { PageRoutes } from '../constants';
 import { fadeInOut } from '../animations';
@@ -26,12 +26,7 @@ function Contact() {
       <Container>
         <FlexBox alignItems='flex-start' justifyContent='space-around'>
           <FlexBox flexDirection='column' rowGap={15}>
-            <Heading 
-              title='Contact Us'
-              type='h2'
-              fontFamily='secondary'
-              fontWeight='500'
-            />
+            <ContactTitle>Contact Us</ContactTitle>
             <FlexBox flexDirection='column' rowGap={10}>
               <FlexBox alignItems='center' columnGap={5}>
                 <Heading 
@@ -60,12 +55,7 @@ function Contact() {
             </FlexBox>
           </FlexBox>
           <FlexBox flexDirection='column' rowGap={15}>
-            <Heading 
-              title='Follow Us'
-              type='h2'
-              fontFamily='secondary'
-              fontWeight='500'
-            />
+            <ContactTitle>Follow Us</ContactTitle>
             <FlexBox alignItems='center' columnGap={10}>
               <a href='https://linkedin.com/' target='_blank'>
                 <Button>
