@@ -2,7 +2,7 @@
 
 Welcome to the Library Kiosk Project. This project is a front-end web application developed using TypeScript and React, aiming to streamline the borrowing and returning of books through a self-service kiosk in a library.
 
-[Click and view application video review](https://clipchamp.com/watch/LpFOeV0zdkD/embed)
+[Click and view the application video review](https://clipchamp.com/watch/LpFOeV0zdkD/embed)
 
 ## Table of Contents
 
